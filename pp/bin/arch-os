@@ -1,0 +1,44 @@
+#!/bin/sh
+#  arch-os from $Date: 2012/02/02 11:39:30 $ $Revision: 1.27 $ $RCSfile: dtd108.doc,v $
+
+OS=`uname -s | dd conv=lcase 2>/dev/null`
+case $OS in
+	sunos)
+	case `uname -r` in
+		4.*)
+			case `/usr/bin/arch` in
+				sun4) ARCH=sparc;;
+				*) exit 1;;
+			esac;;
+		5.*)
+			OS=solaris
+			case `uname -p` in
+				sparc) ARCH=sparc;;
+				i386) ARCH=x86;;
+				i486) ARCH=x86;;
+				i586) ARCH=x86;;
+				i686) ARCH=x86;;
+				*) ARCH=unsupported;;
+			esac;;
+	esac;;
+	linux)
+	case `uname -m` in
+		i386) ARCH=x86;;
+		i486) ARCH=x86;;
+		i586) ARCH=x86;;
+		i686) ARCH=x86;;
+		*) ARCH=unsupported;;
+	esac;;
+	darwin)
+	case `uname -p` in
+		powerpc) ARCH=powerpc;;
+		i386) ARCH=x86;;
+		i486) ARCH=x86;;
+		i586) ARCH=x86;;
+		i686) ARCH=x86;;
+		*) ARCH=unsupported;;
+	esac;;
+	*)	
+	ARCH=unsupported;;
+esac
+echo "ARCH=$ARCH; OS=$OS"

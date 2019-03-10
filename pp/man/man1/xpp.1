@@ -1,0 +1,125 @@
+.TH XPP 1 "17 Apr 2003" "Lemma One" "Unix Programmer's Manual"
+.SH NAME
+xpp \- The X/Windows User Interface for ProofPower
+.SH SYNOPSIS
+.B xpp
+[Standard X Toolkit options] [xpp option] ...
+.SH DESCRIPTION
+The program
+.I "xpp"
+provides a convenient way to prepare, check and execute
+ProofPower scripts under the X Windows System.
+.I "xpp"
+combines a general purpose text editor with a command interface for
+operating the Product specification and proof facilities.
+Consult the
+.I "xpp"
+.I "User Guide"
+for full information.
+Once
+.I "xpp"
+is running, you can also use its help menu to find further information
+on how to use it.
+.LP
+In the command line syntax above,
+.I "Standard X toolkit options"
+refers to the options which are automatically supported by X Toolkit applications.
+An example is the option
+.I "-display"
+which may be used to specify the X server on which you wish
+.I "xpp"
+output to be displayed.
+Consult the UNIX manual page on X(7) for more information on these options.
+.LP
+The following are the most commonly used values for
+.I "xpp option"
+:
+.TP
+.B "-b"
+"blocking" - run in the foreground not in the background.
+.TP
+.B "-c command [arg ...]"
+"command line" - run
+.B "command"
+with the specified arguments.
+.TP
+.B "-d database[#theoryname]"
+"database" - run ProofPower with the specified database
+making the specified theory (if supplied) the current theory at the start of the ProofPower run.
+.TP
+.B "[-f] name"
+"file name" - open file
+.B "name"
+for editing.
+.TP
+.B "-h"
+"have fonts" - do not attempt to load any fonts.
+.TP
+.B "-i files"
+"include files" - specifies a comma-separated list of ProofPower-ML files to be executed in turn
+at the beginning of the ProoPower run.
+.TP
+.B "-r"
+"read-only" - start with the read-only option turned on.
+.TP
+.B "-- ml_flags"
+"ML flags" - pass everything after "--" as flags to the Standard ML compiler.
+.LP
+In the form with
+.B "-c command"
+everything after
+.B "command"
+is taken as comprising an argument list
+.B "arg ..."
+for the command.
+.B "-f"
+may be omitted if
+.B "name"
+is not itself an xpp option.
+.LP
+Any other valid options for the program
+.I "pp(1)"
+that is used to run an interactive ProofPower session
+may also be supplied as
+.I "xpp options."
+.LP
+If neither
+.B "-d database"
+or
+.B "-c command"
+is specified, then
+.I "xpp"
+will run an editor-only session.
+If
+.B "-d database"
+is specified then
+.I "xpp"
+will run the shell script
+.I "pp(1)"
+passing it the relevant
+.I "xpp options."
+If
+.B "-c command"
+is specified,
+.I "xpp"
+will run a command session
+with the command line exactly as specified after
+.B "-c."
+It is an
+error for options relating to a ProofPower run to appear before
+.B "-c."
+
+The command line interface to
+.I "xpp"
+is configurable.
+The above describes the standard configuration.
+See the
+.I "xpp"
+.I "User Guide"
+for more information.
+.SH SEE ALSO
+.I "pp(1)"
+.I "hol(1)"
+.I "zed(1)"
+
+.I "USR031: ProofPower - Xpp User Guide"

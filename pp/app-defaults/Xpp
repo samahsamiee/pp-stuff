@@ -1,0 +1,196 @@
+! $Id: Xpp.ad,v 2.74 2011/09/04 14:08:31 rda Exp rda $
+! Application Defaults file for xpp: the X/Motif interface for ProofPower
+!
+! Main Window preferences:
+! The numbers for rows and columns in text widgets are in characters,
+! not pixels.
+!
+Xpp.orientation:			VERTICAL
+Xpp.totalRows:				32
+Xpp.totalColumns:			80
+Xpp.journalRatio:			0.5
+Xpp.editOnlyRows:			24
+Xpp.editOnlyColumns:			80
+Xpp*script.background:			white
+Xpp*script.foreground:			black
+Xpp*namestring.columns:			24
+Xpp*journal.background:			light blue
+Xpp*journal.foreground:			black
+Xpp*journal.editable:			false
+!
+! background and foreground colours for all other text widgets
+! and text field widgets:
+!
+Xpp*XmText.background:			white
+Xpp*XmText.foreground:			black
+Xpp*XmTextField.background:		white
+Xpp*XmTextField.foreground:		black
+!
+! Allow windows in paned layouts to grow large (3,000 pixels)
+! N.b., dimensions in X Windows may be represented as signed
+! 16 bit quantities, so setting this > 2**15-1 is unwise.
+!
+Xpp*paneMaximum:			3000
+!
+! Text widget preferences:
+!
+Xpp*scrollVertical:			true
+Xpp*scrollLeftSide:			true
+Xpp*scrollHorizontal:			false
+Xpp*wordWrap:				true
+!
+! Control effect of multiple clicks in text areas:
+! 1 click = select-position, 2 clicks=select-word, 3 clicks=select-line,
+! 4 clicks = select-all. selectionArrayCount = C means support up to
+! C clicks.
+!
+Xpp*selectionArrayCount:		3
+!
+! Palette Tool Size:
+! These numbers are in pixels:
+!
+Xpp*Palette.form.width:			210
+Xpp*Palette.form.height:		380
+!
+! Editor backup policy:
+!
+Xpp*take-backups.set:			True
+Xpp*delete-backups.set:			True
+!
+! Search and Replace options:
+!
+Xpp*ignore-case.set:			False
+Xpp*use-wildcards.set:			False
+Xpp*search-text.rows:			1
+Xpp*search-text.columns:		30
+Xpp*replace-text.rows:			1
+!
+! Goto Line options:
+!
+Xpp*line-number.columns:		6
+Xpp*line-number.background:		white
+!
+! Read-only option:
+!
+Xpp*read-only.set:			False
+!
+! Limit on journal size (bytes):
+!
+Xpp*journal-max.value:			1000000
+!
+! Default answer to "please enter the command you wish to run"
+! put up when the command string on the command line is empty
+! E.g., when started from the Tools menu of another session.
+!
+Xpp*startup-command-line.value:		pp
+!
+! Policy for adding missing new-lines in Execute Selection:
+! Interpretation is
+!	0: `Execute Selection' adds missing new-lines
+!	1: `Execute Selection' prompts for missing new-lines
+!	2: `Execute Selection' ignores missing new-lines.
+!
+Xpp*addNewlineMode:			0
+!
+! Initial contents of the list in the Command Line Tool:
+! Newlines ("\n"s) required at the end of each list item except the last
+!
+Xpp*commandLineList:	\
+print_current_goal();\n\
+print_status();\n\
+save_and_quit();\n\
+undo 1;
+!
+! Translations for the Command Line Tool:
+!
+Xpp*command-text.translations: #override \
+<Key>osfPageDown : command-history-down()\n\
+<Key>osfPageUp : command-history-up()
+!
+! Command Line Tool dimensions and characteristics:
+!
+Xpp*command-text.columns:		40
+Xpp*command-text.rows:			1
+Xpp*command-text.editMode:		MULTI_LINE_EDIT
+Xpp*command-text.wordWrap:		True
+!
+! Make Home and End keys work nicely in file selection boxes:
+! Following makes Home and End work as normal (by not redefining
+! them in the textAccelerators resource) and makes Ctrl+Home
+! and Ctrl+End mean go the beginning or end of the file name list.
+!
+Xpp*filesel.textAccelerators:    #override\n\
+:<Key>osfUp:            		SelectionBoxUpOrDown(0)\n\
+:<Key>osfDown:          		SelectionBoxUpOrDown(1)\n\
+:Ctrl<Key>osfBeginLine:        		SelectionBoxUpOrDown(2)\n\
+:Ctrl<Key>osfEndLine:          		SelectionBoxUpOrDown(3)\n\
+:<Key>osfRestore:			SelectionBoxRestore()\n\
+:Shift Ctrl ~Meta ~Alt <Key>space:	SelectionBoxRestore()
+!
+! Fonts:
+!
+! script window (should be one of the ProofPower fonts):
+Xpp*script.fontList:			holnormal
+! journal window (should be one of the ProofPower fonts):
+Xpp*journal.fontList:			holnormal
+! journal window (should be one of the ProofPower fonts):
+Xpp*help-text.fontList:			holnormal
+! search text in the search and replace tool  (should be one of the ProofPower fonts):
+Xpp*search-text.fontList:				holnormal
+! replacement text in the search and replace tool  (should be one of the ProofPower fonts):
+Xpp*replace-text.fontList:				holnormal
+! command line tool (should be one of the ProofPower fonts):
+Xpp*command-text.fontList:			holnormal
+! anything else (can be any font):
+Xpp*fontList:				7x14
+!
+! Set up pp as the default command with "pp -V" as the
+! command to check its command line options and the
+! concatenation of the xpp and pp getopt(1) option
+! strings as the option string (removing f from pp)
+!
+Xpp.defaultCommand:			pp
+Xpp.argumentChecker:			pp -V
+Xpp.optionString:			bchrf:d:i:F:nsve
+!
+! Palette set-up:
+! Spaces and tabs are ignored as are blank lines
+! A "." in a palette row means a button position that is to be skipped.
+! The following is a popular 12x12 layout
+Xpp.palette: \
+ ± ≤ ≥ ¥ § µ ∂ ∑ „\n\
+ ç é ö Ä † ° ¿ £ • ﬁ Â ‰\n\
+ ™ ∏ Ì Ú í · Å ª Ö ® © ´\n\
+ ﬂ ≠ ˛ ‡ œ Ô è ü û\n\
+ ß ¢ Î ã ˘ Ï ˚ ˝ Ç\n\
+ º æ ¯ Ω ¶ ∫ Ù ‚\n\
+ ¡ ¬ « ƒ ≈ ⁄ »   … À Ã Õ\n\
+ Œ ÿ – “ ” ‘ ’ ∆ — Ÿ ◊\n\
+ á Ñ ä å ò ê ì ï Ü ô ó\n\
+ ñ ÷ Ê Ó  Û Ø ø É ˙ ı ˆ\n\
+ π ˇ ù ‹ ˜ à ¸ ú ∞ √ È\n\
+ ¨ î ë Ò Æ € › â õ Á Ë Í\n
+!
+! The layout below is a slighly more compact 11x12 layout
+! and includes all the spare characters.
+! ± ≤ ≥ ¥ § µ ∂ ∑ „ Ω º æ\n\
+! ç é ö Ä † ° ¿ ´ • ﬁ Â £\n\
+! ‰ ™ ∏ Ì Ú í · Å ª ® © Ö\n\
+! ﬂ ≠ ˛ ‡ œ Ô è ü û .  € › \n\
+! ß ¢ Î ã Ï ˘ ˚ ˝ Ç Ù ‚ ı\n\
+! ¡ ¬ « ƒ ≈ ⁄ »   … À Ã Õ\n\
+! Œ ÿ – “ ” ‘ ’ ∆ — Ÿ ◊ ˆ\n\
+! á Ñ ä å ò ê ì ï Ü ô ó ¯\n\
+! ñ ÷ Ê Ó  Û Ø ø É ˙\n\
+! π ˇ ù ‹ ˜ à ¸ ú ∞ ¶ √ È\n\
+! ¨ î ë Ò Æ ∫ . â õ Á Ë Í\n
+!
+! Include keyboard set-up:
+!
+#include "XppKeyboard"
+!
+! Include templates tool set-up:
+!
+#include "XppTemplates"
+!
+!!!!!! End of Xpp resource file !!!!!

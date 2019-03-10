@@ -1,0 +1,8 @@
+#! /bin/sh
+#	hol   From: $Id: imp111.doc,v 1.61 2012/12/27 15:57:37 rda Exp rda $ %Z%
+#
+# Shell script to start a ProofPower-HOL session
+PROGNAME=hol
+USAGE="$PROGNAME [-d database[#theoryname]] [-i files] [-f files [-n|-s] [-v]] [-- ml_flags]"
+export PROGNAME USAGE
+pp -d hol $@

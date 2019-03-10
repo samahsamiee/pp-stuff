@@ -1,0 +1,3532 @@
+Thu May 31 22:22:44 PDT 2018
+Creating new databases
+pp_make_database -f -p zed example_zed
+Freezing /home/debian/pp/db/zed.polydb
+Compacting /home/debian/pp/db/zed.polydb
+Parent database /home/debian/pp/db/zed.polydb now has a frozen theory hierarchy
+pp_make_database: child database example_zed.polydb created and initialised
+touch wrk051_zed.flag
+docsml usr011A
+docsml usr011B
+docsml usr011C
+docsml usr011D
+docsml usr011E
+docsml usr011T
+docsml usr023_slides
+zed -d example_zed -f wrk051_delete_theories_usr011.sml -f usr011A.sml \
+	-f usr011B.sml -f usr011C.sml -f usr011D.sml \
+	-f usr011T.sml -f usr011E.sml -f usr023_slides.sml
+val it = (): unit
+val it = (): unit
+=== ProofPower 3.1w8 [HOL/Z Database]
+=== Copyright (C) Lemma 1 Ltd. 2000-2018
+Database name: /home/debian/pp/tmp_build/example_zed
+:) val it = (): unit
++++ Compiled wrk051_delete_theories_usr011.sml: OK +++
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = fn: Z_TERM -> TERM
+val it = fn: TERM -> Z_TERM
+val term_true = ÒtrueÆ: TERM
+val term_imp = Òtrue ¥ trueÆ: TERM
+val it = Z¥ (ÒtrueÆ, ÒtrueÆ): Z_TERM
+val it = ZTrue: Z_TERM
+val ante = ÒtrueÆ: TERM
+val concl = ÒtrueÆ: TERM
+val it = fn: TERM -> TERM
+val it = Ò˙ ™ ˙Æ: TERM
+val it = Ò [x, y : ˙]Æ: TERM
+val it = ÒñÆ: TERM
+val it = Ò(x, y).2Æ: TERM
+val it = false: bool
+Type error in Òt . 2Æ
+In a term of the form ÒT.numberÆ, T must be a tuple
+The following sub-term is not a tuple
+   Òt:'aÆ
+Exception * Type error [Z-Parser.62000] * handled by use_file at line 17 when in
+ `non_stop_mode'
+Type error in Òx ∫ yÆ
+Casts are not permitted in Standard Z
+Exception * Type error [Z-Parser.62000] * handled by use_file at line 22 when in
+ `non_stop_mode'
+val it = true: bool
+val it =
+   Ù [X]({ﬁ[X], •[X]} Ä  ( X) ≠  X
+       ± (µ A :   X
+         ∑ ﬁ[X] A = {x : X | ∂ S : A ∑ x ç S}
+           ± •[X] A = {x : X | µ S : A ∑ x ç S})): THM
+val schexp = Ò[x : Ó]Æ: TERM
+val it = Ò [x : ˙]Æ: TERM
+val predicate = Ò[x : Ó]Æ: TERM
+val it = ÒñÆ: TERM
+val conj = Z± (ÒtrueÆ, ÒtrueÆ): Z_TERM
+val it = (): unit
+val it = (): unit
+val it = false: bool
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = Ù 543 * 20 = 10860: THM
+val it = Ù "string" = ß¨`s`Æ, ¨`t`Æ, ¨`r`Æ, ¨`i`Æ, ¨`n`Æ, ¨`g`Æ¢: THM
+val dec1 = Òëdec_ofÒ[x, y : ˙]ÆÆÆ: TERM
+val dec2 = Òëdec_ofÒ[File!]ÆÆÆ: TERM
+val decl1 = ÒÒ:x, y : ˙; File!ÆÆ: TERM
+val pred2 = Ù ëdec_ofÒ[x, y : ˙]ÆÆ § {x, y} Ä ˙: THM
+val pred3 = Ù ëdec_ofÒ[File!]ÆÆ § (File!): THM
+val pred4 = Ù Ò:x, y : ˙; File!Æ § {x, y} Ä ˙ ± (File!): THM
+val dec3 = Ù {x, y} Ä ˙ § ëdec_ofÒ[x, y : ˙]ÆÆ: THM
+val dec3 = Ù (File!) § ëdec_ofÒ[(File!)]ÆÆ: THM
++++ Compiled usr011A.sml: OK +++
+val x_eq_y = x = y Ù x = y: THM
+val eq_sym_thm = x = y ¥ y = x Ù x = y ¥ y = x: THM
+val y_eq_x = x = y ¥ y = x, x = y Ù y = x: THM
+val imp_thm = x = y Ù (x = y ¥ y = x) ¥ y = x: THM
+val imp_thm2 = Ù x = y ¥ (x = y ¥ y = x) ¥ y = x: THM
+val thm1 = a ± b ± c Ù a: THM
+val thm2 = a ± b ± c Ù b: THM
+val thm3 = a ± b ± c Ù c: THM
+val newconj = a ± b ± c Ù a ± b ± c: THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òa ± b ¥ b ± aÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òa ± b ¥ b ± aÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  2 *)ÒaÆ
+(*  1 *)ÒbÆ
+
+(* ?Ù *)Òb ± aÆ
+
+val it = (): unit
+Tactic produced 2 subgoals:
+
+(* *** Goal "2" *** *)
+
+(*  2 *)ÒaÆ
+(*  1 *)ÒbÆ
+
+(* ?Ù *)ÒaÆ
+
+
+(* *** Goal "1" *** *)
+
+(*  2 *)ÒaÆ
+(*  1 *)ÒbÆ
+
+(* ?Ù *)ÒbÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current goal achieved, next goal is:
+
+(* *** Goal "2" *** *)
+
+(*  2 *)ÒaÆ
+(*  1 *)ÒbÆ
+
+(* ?Ù *)ÒaÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òa ± b ± (≥ a ≤ ≥ b) ¥ falseÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  1 *)ÒaÆ
+
+(* ?Ù *)Òb ± (≥ a ≤ ≥ b) ¥ falseÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  2 *)ÒaÆ
+(*  1 *)ÒbÆ
+
+(* ?Ù *)Ò≥ a ≤ ≥ b ¥ falseÆ
+
+val it = (): unit
+Tactic produced 2 subgoals:
+
+(* *** Goal "2" *** *)
+
+(*  2 *)ÒaÆ
+(*  1 *)ÒbÆ
+
+(* ?Ù *)Ò≥ b ¥ falseÆ
+
+
+(* *** Goal "1" *** *)
+
+(*  2 *)ÒaÆ
+(*  1 *)ÒbÆ
+
+(* ?Ù *)Ò≥ a ¥ falseÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current goal achieved, next goal is:
+
+(* *** Goal "2" *** *)
+
+(*  2 *)ÒaÆ
+(*  1 *)ÒbÆ
+
+(* ?Ù *)Ò≥ b ¥ falseÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òa ± b ± (≥ a ≤ ≥ b) ¥ falseÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(*  2 *)Ò≥ bÆ
+(*  1 *)Ò≥ aÆ
+
+(* ?Ù *)Ò≥ (a ≤ b)Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+val it = Ù a ± b ± (≥ a ≤ ≥ b) ¥ false: THM
+val it = Ù x = y § (µ x1 : É ∑ x1 ç x § x1 ç y): THM
+val it = Ù (x, y) = (v, w) § x = v ± y = w: THM
+val it = Ù (cn1 ¶ x, cn2 ¶ y) = (cn1 ¶ v, cn2 ¶ w) § x = v ± y = w: THM
+val it = Ù x = y § x.cn1 = y.cn1 ± x.cn2 = y.cn2: THM
+val it = ZApp (ÒprerelÆ, ÒxÆ): Z_TERM
+val it = (): unit
+val it = Zç (ÒxÆ, Ò(prerel _)Æ): Z_TERM
+val it = (): unit
+val it = Zç (ÒxÆ, Ò(_ postrel)Æ): Z_TERM
+val it = (): unit
+val it = Zç (Ò(x, y)Æ, Ò(_ infixrel _)Æ): Z_TERM
+val it = (): unit
+val it = Zç (Òß1, 2, 3¢Æ, Ò(rellb ... relrb)Æ): Z_TERM
+val it = Ù [x : X] § (x ¶ x) ç [x : X]: THM
+val it = Ù [x : X] § x ç X: THM
+val it = (): unit
+val it = Ù a = b ± c = d ± e = f ¥ b = e ¥ c = a ¥ d = f: THM
+val it = (): unit
+val it =
+   Ù µ i : É
+       ∑ µ j, k : É
+         ∑ j + i = i + j ± i + j + k = i + (j + k) ± j + (i + k) = i + (j + k):
+   THM
+val it =
+   Ù 43 ç É ± true
+       ¥ (µ j, k : É
+         ∑ j + 43 = 43 + j
+           ± 43 + j + k = 43 + (j + k)
+           ± j + (43 + k) = 43 + (j + k)): THM
+val it = Ù µ i, j, k : É ∑ i + j + k = i + (j + k): THM
+val it =
+   Ù {exp.i, exp.j, exp.k} Ä É ± true
+       ¥ exp.i + exp.j + exp.k = exp.i + (exp.j + exp.k): THM
+val it = Ù {2, 3, 4} Ä É ± true ¥ 2 + 3 + 4 = 2 + (3 + 4): THM
+val it = Ù {v, w, x} Ä É ± true ¥ v + w + x = v + (w + x): THM
+val it = Ù µ v, w, x : É ∑ v + w + x = v + (w + x): THM
+val it = Ù 2 + 3 + 4 = 2 + 3 + 4: THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ x : X ∑ x = xÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òx ç X ± true ¥ x = xÆ
+
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò[X]((µ x : X ∑ P x ¥ Q x) ¥ (µ x : X ∑ P x) ¥ (µ x : X ∑ Q x))Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òµ x : X ∑ P x ¥ Q xÆ
+(*  2 *)Òµ x : X ∑ P xÆ
+(*  1 *)Òx ç XÆ
+
+(* ?Ù *)ÒQ xÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  4 *)Òµ x : X ∑ P x ¥ Q xÆ
+(*  3 *)Òµ x : X ∑ P xÆ
+(*  2 *)Òx ç XÆ
+(*  1 *)Ò≥ P xÆ
+
+(* ?Ù *)ÒQ xÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò(∂ x : ˙ ∑ x = 2 ± x = 3) ¥ falseÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  2 *)Òx = 2Æ
+(*  1 *)Òx = 3Æ
+
+(* ?Ù *)ÒfalseÆ
+
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò≥ (∂ x : ˙ ∑ x = 2 ± x = 3)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ x : ˙ ∑ ≥ (x = 2 ± x = 3)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òx ç ˙ ± true ¥ ≥ (x = 2 ± x = 3)Æ
+
+val it = (): unit
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò∂ x : ˙ ∑ x * x = 4Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò2 ç ˙ ± true ± 2 * 2 = 4Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò(∂â1 x : ˙ ∑ x = 2 ± x = 3) ¥ falseÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òx = 2Æ
+(*  2 *)Òx = 3Æ
+(*  1 *)Òµ x' : ˙ | true ± x' = 2 ± x' = 3 ∑ x' = xÆ
+
+(* ?Ù *)ÒfalseÆ
+
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò≥ (∂â1 x : ˙ ∑ x = 2 ≤ x = 3)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ x : ˙
+           | true ± (x = 2 ≤ x = 3)
+           ∑ ≥
+           (µ x' : ˙ | true ± (x' = 2 ≤ x' = 3) ∑ x' = x)Æ
+
+val it = (): unit
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ i : Ó ∑ abs i = abs ~ iÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  1 *)Ò0 º iÆ
+
+(* ?Ù *)Òabs i = abs ~ iÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val it = Ù µ i : Ó ∑ abs i = abs ~ i: THM
++++ Compiled usr011B.sml: OK +++
+val it = ZApp (ÒfÆ, ÒaÆ): Z_TERM
+val it = ZApp (Ò(_ ¿ _)Æ, Ò(a, b)Æ): Z_TERM
+val it = ZApp (Ò(˚ ... ˝)Æ, Òß1, 2, 3, 2, 1¢Æ): Z_TERM
+val it = P a, a ç X Ù (Ã x : X | P x ∑ f x) a = f a: THM
+val it = Ù f a = (Õ f_a : É | (a, f_a) ç f): THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òf a = vÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò(µ f_a : É | (a, f_a) ç f ∑ f_a = v) ± (a, v) ç fÆ
+
+val it = (): unit
+Now 0 goals on the main goal stack
+val it = ([], Òf a = vÆ): GOAL
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òf ç Ó Ô ˙ ¥ (4, ~ 45) ç f ¥ f 4 = ~ 45Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  2 *)Òf ç Ó Ô ˙Æ
+(*  1 *)Ò(4, ~ 45) ç fÆ
+
+(* ?Ù *)Òf 4 = ~ 45Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val it = Ù f ç Ó Ô ˙ ¥ (4, ~ 45) ç f ¥ f 4 = ~ 45: THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò[X](µ b : bag X ∑ count[X] b ç X ≠ Ó)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  1 *)Òb ç bag XÆ
+
+(* ?Ù *)Òcount[X] b ç X ≠ ÓÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òb ç bag XÆ
+(*  2 *)Òcount[X] ç bag X è X ≠ ÓÆ
+(*  1 *)Òµ x : X; B : bag X ∑ count[X] B = (Ã x : X ∑ 0) ´ BÆ
+
+(* ?Ù *)Òcount[X] b ç X ≠ ÓÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val it = Ù [X](µ b : bag X ∑ count[X] b ç X ≠ Ó): THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò[X](µ b, c : bag X ∑ (_ Ç _)[X] (b, c) ç bag X)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  2 *)Òb ç bag XÆ
+(*  1 *)Òc ç bag XÆ
+
+(* ?Ù *)Ò(_ Ç _)[X] (b, c) ç bag XÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  4 *)Òb ç bag XÆ
+(*  3 *)Òc ç bag XÆ
+(*  2 *)Ò(_ Ç _)[X] ç bag X ∏ bag X ≠ bag XÆ
+(*  1 *)Òµ B, C : bag X; x : X
+           ∑ count ((_ Ç _)[X] (B, C)) x = count B x + count C xÆ
+
+(* ?Ù *)Ò(_ Ç _)[X] (b, c) ç bag XÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  4 *)Òb ç bag XÆ
+(*  3 *)Òc ç bag XÆ
+(*  2 *)Ò(_ Ç _)[X] ç bag X ∏ bag X ≠ bag XÆ
+(*  1 *)Òµ B, C : bag X; x : X
+           ∑ count ((_ Ç _)[X] (B, C)) x = count B x + count C xÆ
+
+(* ?Ù *)Ò(_ Ç _)[X] (b, c) ç bag XÆ
+
+The subgoal  is ¡-convertible to its goal
+Tactic did not change the goal state
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  5 *)Òb ç bag XÆ
+(*  4 *)Òc ç bag XÆ
+(*  3 *)Ò(_ Ç _)[X] ç bag X ∏ bag X ≠ bag XÆ
+(*  2 *)Òµ B, C : bag X; x : X
+           ∑ count ((_ Ç _)[X] (B, C)) x = count B x + count C xÆ
+(*  1 *)Ò(b, c) ç bag X ∏ bag XÆ
+
+(* ?Ù *)Ò(_ Ç _)[X] (b, c) ç bag XÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val it = Ù [X](µ b, c : bag X ∑ (_ Ç _)[X] (b, c) ç bag X): THM
+val it = Ù z ç (Ã x : X | P x ∑ f x) § z.1 ç X ± P z.1 ± f z.1 = z.2: THM
+val it = Ù (Ã x : X | P x ∑ f x) = {x : X | P x ∑ (x, f x)}: THM
+val it =
+   Ù µ x' : É
+       ∑ (µ x : X | P ∑ y = x') ± (∂ x : X | P ∑ y = x')
+         ¥ (Õ x : X | P ∑ y) = x': THM
+val it = Ù (let x ¶ 9 ∑ (x, x + x)) = (9, 9 + 9): THM
+val it = Ù z ç  y § (µ x1 : É ∑ x1 ç z ¥ x1 ç y): THM
+val it = Ù z ç {1, 2, 3, 4, 5} § z = 1 ≤ z = 2 ≤ z = 3 ≤ z = 4 ≤ z = 5: THM
+val it = Ù 9 ç {x : Ó | x < 12} § true: THM
+val it = Ù z ç {x, y : Ó | x < y} § {z.1, z.2} Ä Ó ± z.1 < z.2: THM
+val it = Ù (v, w) ç {x, y : Ó | x < y} § {v, w} Ä Ó ± v < w: THM
+val it =
+   Ù z ç {x, y : Ó | x < y ∑ x * y - x} § (∂ x, y : Ó | x < y ∑ x * y + ~ x = z):
+   THM
+val it = Ù (x, y) = (a, b) § x = a ± y = b: THM
+val it = Ù (x, y).1 = x: THM
+val it = Ù (a, b, c) ç x ∏ y ∏ z § a ç x ± b ç y ± c ç z: THM
+val it = Ù x ∏ y ∏ z = {tâ1 : x; tâ2 : y; tâ3 : z}: THM
+val it =
+   Ù x ∏ y ∏ z = x' ∏ y' ∏ z'
+       § (µ x1 : É; x2 : É; x3 : É
+         ∑ x1 ç x ± x2 ç y ± x3 ç z § x1 ç x' ± x2 ç y' ± x3 ç z'): THM
+val it = Ù (x ¶ a, y ¶ b) = (x ¶ c, y ¶ d) § a = c ± b = d: THM
+val it = Ù  File' = (age ¶ age', people ¶ people'): THM
+val it = Ù  File' = (age ¶ age', people ¶ people'): THM
+val it = Ù (x ¶ a, y ¶ b).y = b: THM
+val it = Ù ( File').age = age': THM
+val it = Ù z ç [x : ˙; y : Ó] § 0 º z.y: THM
+val it = Ù (x ¶ a, y ¶ b) ç [x : ˙; y : Ó] § 0 º b: THM
+val it = Ù ßa, b, c¢ = {(1, a), (2, b), (3, c)}: THM
+val it = Ù z ç ßa, b, c¢ § z ç {(1, a), (2, b), (3, c)}: THM
+val it = Ù z ç ßa, b, c¢ § z = (1, a) ≤ z = (2, b) ≤ z = (3, c): THM
+val it = Ù z ç (≥ File) § ≥ z ç File: THM
+val it =
+   Ù z ç (File ± File2)
+       § (age ¶ z.age, people ¶ z.people) ç File
+         ± (height ¶ z.height, people ¶ z.people) ç File2: THM
+val it =
+   Ù z ç (File ≤ File2)
+       § (age ¶ z.age, people ¶ z.people) ç File
+         ≤ (height ¶ z.height, people ¶ z.people) ç File2: THM
+val it =
+   Ù z ç (File ¥ File2)
+       § (age ¶ z.age, people ¶ z.people) ç File
+         ¥ (height ¶ z.height, people ¶ z.people) ç File2: THM
+val it =
+   Ù z ç (File § File2)
+       § (age ¶ z.age, people ¶ z.people) ç File
+       § (height ¶ z.height, people ¶ z.people) ç File2: THM
+val it =
+   Ù z ç (∂ File3 | people = {} ∑ File2)
+       § (∂ x1 : É
+         ∑ ((people ¶ x1.people) ç File3
+           ± x1.people = {})
+           ± (height ¶ z.height, people ¶ x1.people) ç File2): THM
+val it =
+   Ù z ç (∂â1 File3 | people = {} ∑ File2)
+       § (∂â1 x1 : É
+         ∑ ((people ¶ x1.people) ç File3
+           ± x1.people = {})
+           ± (height ¶ z.height, people ¶ x1.people) ç File2): THM
+val it =
+   Ù z ç (µ File3 | people = {} ∑ File2)
+       § (µ x1 : É
+         ∑ (people ¶ x1.people) ç File3 ± x1.people = {}
+           ¥ (height ¶ z.height, people ¶ x1.people) ç File2): THM
+val it = Ù z ç (File'') § (age ¶ z.age'', people ¶ z.people'') ç File: THM
+val it =
+   Ù z ç (pre FileOp)
+       § z ç [age : É; i? : É; people : É | ∂ age' : É; people' : É ∑ FileOp]:
+   THM
+val it =
+   Ù (age ¶ age, i? ¶ i?, people ¶ people) ç (pre FileOp)
+       § (∂ age' : É; people' : É ∑ FileOp): THM
+val it = Ù z ç (File \âs (age)) § z ç [people : É | ∂ age : É ∑ File]: THM
+val it = Ù (people ¶ people) ç (File \âs (age)) § (∂ age : É ∑ File): THM
+val it = Ù z ç (File [aged/age]) § (age ¶ z.aged, people ¶ z.people) ç File: THM
+val it = Ù (aged ¶ age, people ¶ people) ç (File [aged/age]) § File: THM
+val it =
+   Ù z ç (FileOp ˘âs File) § z ç ((FileOp ± File) \âs (age', i?, people')): THM
+val it =
+   Ù (age ¶ age, people ¶ people) ç (FileOp ˘âs File)
+       § (∂ age' : É; i? : É; people' : É ∑ FileOp ± File): THM
+val it =
+   Ù z ç (FileOp ªâs FileOp)
+       § z
+         ç [age : É; i? : É; people : É; age' : É; people' : É
+           | ∂ x1 : É; x2 : É
+           ∑ (age ¶ age, age' ¶ x2, i? ¶ i?, people ¶ people, people' ¶ x1)
+               ç FileOp
+             ± (age ¶ x2, age' ¶ age', i? ¶ i?, people ¶ x1, people' ¶ people')
+               ç FileOp]: THM
+val it =
+   Ù z ç (FileOp ªâs FileOp)
+       § (∂ x1 : É; x2 : É
+         ∑ (age ¶ z.age, age' ¶ x2, i? ¶ z.i?, people ¶ z.people, people' ¶ x1)
+             ç FileOp
+           ± (age ¶ x2, age' ¶ z.age', i? ¶ z.i?, people ¶ x1,
+                 people' ¶ z.people')
+             ç FileOp): THM
+val it = Ù z ç (Ñ File) § z ç [File; File']: THM
+val it =
+   Ù z ç (Ñ File)
+       § (age ¶ z.age, people ¶ z.people) ç File
+         ± (age ¶ z.age', people ¶ z.people') ç File: THM
+val it = Ù z ç (ò File) § z ç [File; File' |  File =  File']: THM
+val it =
+   Ù z ç (ò File)
+       § ((age ¶ z.age, people ¶ z.people) ç File
+         ± (age ¶ z.age', people ¶ z.people') ç File)
+         ± z.age = z.age'
+         ± z.people = z.people': THM
++++ Compiled usr011C.sml: OK +++
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val G1_def = Ù G1 = É: THM
+val it = Ù x ç G1 § true: THM
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = Ù x ç NAME § true: THM
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val gprod_def = Ù GPROD = G1 ∏ G2: THM
+val swap_def = Ù [X, Y](X swap Y = Y ∏ X): THM
+val it = Ù ˙ swap Ó = Ó ∏ ˙: THM
+val it = Ù SCHEMA ≤ x = y § ≥ x = y ≤ x = y: THM
+val it = (): unit
+val sch_def = Ù Sch = [x, y : ˙; z : Ó | x = y ≤ y = z]: THM
+val it =
+   Ù (µ x, y : ˙; z : Ó ∑ Sch ≤ disjoint ß{x}, {y}, {z}¢)
+       § (µ x, y : ˙; z : Ó
+         ∑ ({x, y} Ä ˙ ± z ç Ó) ± (x = y ≤ y = z) ≤ disjoint ß{x}, {y}, {z}¢):
+   THM
+val it = (): unit
+val dsubs_def = Ù [X](DSUBS[X] = [set1, set2 :  X | set1 ° set2 = {}]): THM
+val it =
+   Ù (µ (DSUBS[Ó]) ∑ set1 Ä Ó ± set2 Ä Ó)
+       § (µ [set1, set2 :  Ó | set1 ° set2 = {}] ∑ set1 Ä Ó ± set2 Ä Ó): THM
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ (DSUBS[Ó]) ∑ set1 Ä Ó ± set2 Ä ÓÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò(DSUBS[Ó]) ± true ¥ set1 Ä Ó ± set2 Ä ÓÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò{set1, set2} Ä  Ó ± set1 ° set2 = {} ¥ set1 Ä Ó ± set2 Ä ÓÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val twice_def = Ù (twice _) ç ˙ ≠ ˙ ± (µ i : ˙ ∑ twice i = 2 * i): THM
+val it = false: bool
+Exception * no rewriting occurred [rewrite_conv.26001] * handled by use_file at
+ line 67 when in `non_stop_mode'
+val it = true: bool
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ n : ˙ ∑ twice n = 2 * nÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  1 *)Òn ç ˙Æ
+
+(* ?Ù *)Òtwice n = 2 * nÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val select_from_def =
+   Ù [X,
+     Y,
+     Z]((select ... from _)[X, Y, Z] ç (X ™ Y) ∏ (Y ™ Z) ≠ Y ™ Z
+       ± (µ indexed_set : X ™ Y; relation : Y ™ Z
+         ∑ (select ... from _)[X, Y, Z] (indexed_set, relation)
+           = ran indexed_set Ú relation)): THM
+val it = Òselect 1, 3, 8 from sequenceÆ: TERM
+val it = (): unit
+val tree_def = Ù TREE = É: THM
+val tip_def =
+   Ù (tip ç TREE
+       ± fork ç Ó ∏ TREE ∏ TREE ‡ TREE)
+       ± disjoint ß{tip}, ran fork¢
+       ± (µ W :  TREE | {tip} ¿ fork ® Ó ∏ W ∏ W © Ä W ∑ TREE Ä W): THM
+val it = (): unit
+val tvar_def =
+   Ù (Tvar ç G1 ‡ TYPE
+       ± Tcon ç G1 ∏ seq TERM ‡ TYPE
+       ± Con ç G1 ∏ TYPE ‡ TERM
+       ± App ç TERM ∏ TERM ‡ TERM)
+       ± disjoint ßran Tvar, ran Tcon¢
+       ± disjoint ßran Con, ran App¢
+       ± (µ W1 :  TYPE; W2 :  TERM
+         | Tvar ® G1 © ¿ Tcon ® G1 ∏ seq W2 © Ä W1
+           ± Con ® G1 ∏ W1 © ¿ App ® W2 ∏ W2 © Ä W2
+         ∑ TYPE Ä W1 ± TERM Ä W2): THM
+val it = (): unit
+val it = (): unit
+val c1 = Ù [X]((∂ f : X ‡ G1 ∑ true) § (∂ f : X ‡ G2 ∑ true)): THM
+val it = (): unit
+val it = (): unit
+val it = true: bool
+val it = (): unit
+val it = (): unit
+val it =
+   ¨Consistent
+       (Ã z'root'
+         ∑ Ò¨Z'AxDes
+             (ÒÒ:¨$"z'root'"Æ : ˙ÆÆ ± Ò¨$"z'root'"Æ * ¨$"z'root'"ÆÆ = Ò9Æ)ÆÆ)Æ
+     Ù root ç ˙ ± root * root = 9: THM
+Now 2 goals on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)¨Consistent
+           (Ã z'root'
+             ∑ Ò¨Z'AxDes
+                 (ÒÒ:¨$"z'root'"Æ : ˙ÆÆ
+                     ± Ò¨$"z'root'"Æ * ¨$"z'root'"ÆÆ = Ò9Æ)ÆÆ)Æ
+
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò∂ root' : ˙ ∑ root' * root' = 9Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 1 goal on the main goal stack
+Current main goal has been achieved
+val it =
+   Ù Consistent
+       (Ã z'root'
+         ∑ Ò¨Z'AxDes
+             (ÒÒ:¨$"z'root'"Æ : ˙ÆÆ ± Ò¨$"z'root'"Æ * ¨$"z'root'"ÆÆ = Ò9Æ)ÆÆ):
+   THM
+val root_def = Ù root ç ˙ ± root * root = 9: THM
+val it = (): unit
+Now 2 goals on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)¨Consistent
+           (Ã z'empty'
+             ∑ Ò¨Z'AxDes
+                 (µ X∑ ÒÒ:¨$"z'empty'"Æ :  XÆÆ ± z'empty' Ò(X)Æ = Ò{}Æ)ÆÆ)Æ
+
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò∂ empty' : É ∑ µ X : É ∑ ¨empty' Ò(X)ÆÆ ç  X ± ¨empty' Ò(X)ÆÆ = {}Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò¨Ã X∑ Ò{}ÆÆ ç É ± (µ X : É ∑ {} ç  X)Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 1 goal on the main goal stack
+Current main goal has been achieved
+val it =
+   Ù Consistent
+       (Ã z'empty'
+         ∑ Ò¨Z'AxDes (µ X∑ ÒÒ:¨$"z'empty'"Æ :  XÆÆ ± z'empty' Ò(X)Æ = Ò{}Æ)ÆÆ):
+   THM
+val empty_def = Ù [X](empty[X] ç  X ± empty[X] = {}): THM
+val it = (): unit
+Now 2 goals on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)¨Consistent
+           (Ã z'cprod'
+             ∑ Ò¨Z'AxDes
+                 (µ X Y
+                   ∑ ÒÒ:¨$"z'cprod'"Æ :  (X ∏ Y)ÆÆ
+                       ± Òµ x :  X; y :  Y ∑ ¨z'cprod' Ò(X, Y)ÆÆ = X ∏ YÆ)ÆÆ)Æ
+
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò∂ cprod' : É
+           ∑ µ X : É; Y : É
+             ∑ ¨cprod' Ò(X, Y)ÆÆ ç  (X ∏ Y)
+               ± (µ x :  X; y :  Y ∑ ¨cprod' Ò(X, Y)ÆÆ = X ∏ Y)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò¨Ã xy∑ Òxy.1 ∏ xy.2ÆÆ ç É
+           ± true
+           ± (µ X : É; Y : É
+             ∑ ¨(Ã xy∑ Òxy.1 ∏ xy.2Æ) Ò(X, Y)ÆÆ ç  (X ∏ Y)
+               ± (µ x :  X; y :  Y
+                 ∑ ¨(Ã xy∑ Òxy.1 ∏ xy.2Æ) Ò(X, Y)ÆÆ = X ∏ Y))Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò¨Ã xy∑ Òxy.1 ∏ xy.2ÆÆ ç É
+           ± (µ X : É; Y : É
+             ∑ (X, Y).1 ∏ (X, Y).2 ç  (X ∏ Y)
+               ± (µ x :  X; y :  Y ∑ (X, Y).1 ∏ (X, Y).2 = X ∏ Y))Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
++++ Compiled usr011D.sml: OK +++
+val it = (): unit
++++ Compiled usr011T.sml: OK +++
+val it = (): unit
++++ Compiled usr011E.sml: OK +++
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+Now 2 goals on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò(µ x, y : X ∑ P x ¥ R y) § (µ v, w : X ∑ ≥ P w ≤ R v)Æ
+
+val it = (): unit
+Tactic produced 2 subgoals:
+
+(* *** Goal "2" *** *)
+
+(*  5 *)Òµ v, w : X ∑ ≥ P w ≤ R vÆ
+(*  4 *)Òx ç XÆ
+(*  3 *)Òy ç XÆ
+(*  2 *)ÒP xÆ
+(*  1 *)Ò≥ R yÆ
+
+(* ?Ù *)ÒfalseÆ
+
+
+(* *** Goal "1" *** *)
+
+(*  5 *)Òµ x, y : X ∑ P x ¥ R yÆ
+(*  4 *)Òv ç XÆ
+(*  3 *)Òw ç XÆ
+(*  2 *)ÒP wÆ
+(*  1 *)Ò≥ R vÆ
+
+(* ?Ù *)ÒfalseÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current goal achieved, next goal is:
+
+(* *** Goal "2" *** *)
+
+(*  5 *)Òµ v, w : X ∑ ≥ P w ≤ R vÆ
+(*  4 *)Òx ç XÆ
+(*  3 *)Òy ç XÆ
+(*  2 *)ÒP xÆ
+(*  1 *)Ò≥ R yÆ
+
+(* ?Ù *)ÒfalseÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 1 goal on the main goal stack
+Current main goal has been achieved
+val it = Ù (µ x, y : X ∑ P x ¥ R y) § (µ v, w : X ∑ ≥ P w ≤ R v): THM
+val it = fn: TERM -> Z_TERM
+val it = fn: Z_TERM -> TERM
+val it = Ù 543 * 20 = 10860: THM
+val it = Ù "string" = ß¨`s`Æ, ¨`t`Æ, ¨`r`Æ, ¨`i`Æ, ¨`n`Æ, ¨`g`Æ¢: THM
+val pred2 = Ù ëdec_ofÒ[x, y : ˙]ÆÆ § {x, y} Ä ˙: THM
+val pred4 = Ù Ò:x, y : ˙; File!Æ § {x, y} Ä ˙ ± (File!): THM
+val it = (): unit
+val thm1 = µ x, y : Ó ∑ x * y > 0 Ù µ x, y : Ó ∑ x * y > 0: THM
+val thm_a = a Ù a: THM
+val thm_b = a ¥ b Ù a ¥ b: THM
+val thm_c = a ¥ b, a Ù b: THM
+val it = Ù (([x : X])') § (x ¶ x') ç [x : X]: THM
+val it = Ù (([x : X])') § x' ç X: THM
+val it = µ x, y : Ó ∑ x * y > 0 Ù {455, 32} Ä Ó ± true ¥ 455 * 32 > 0: THM
+val it = µ x, y : Ó ∑ x * y > 0 Ù {exp.x, exp.y} Ä Ó ± true ¥ exp.x * exp.y > 0:
+   THM
+val it = Ù 45 ç Ó ± true ¥ ≥ 45 + 1 = 0: THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ a : Ó ∑ abs a * abs ~ a = a * aÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  1 *)Ò0 º aÆ
+
+(* ?Ù *)Òabs a * abs ~ a = a * aÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Ò0 º aÆ
+(*  2 *)Òabs a = aÆ
+(*  1 *)Òabs ~ a = aÆ
+
+(* ?Ù *)Òabs a * abs ~ a = a * aÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val it = Ù µ a : Ó ∑ abs a * abs ~ a = a * a: THM
+val it = P a, a ç X Ù (Ã x : X | P x ∑ f x) a = f a: THM
+val it = Ù f a = (Õ f_a : É | (a, f_a) ç f): THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òf a = vÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò(µ f_a : É | (a, f_a) ç f ∑ f_a = v) ± (a, v) ç fÆ
+
+val it = (): unit
+Now 0 goals on the main goal stack
+val it = ([], Òf a = vÆ): GOAL
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òf ç Ó Ô ˙ ¥ (4, ~ 45) ç f ¥ f 4 = ~ 45Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  2 *)Òf ç Ó Ô ˙Æ
+(*  1 *)Ò(4, ~ 45) ç fÆ
+
+(* ?Ù *)Òf 4 = ~ 45Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val it = Ù f ç Ó Ô ˙ ¥ (4, ~ 45) ç f ¥ f 4 = ~ 45: THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò[X](µ b : bag X ∑ count[X] b ç X ≠ Ó)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  1 *)Òb ç bag XÆ
+
+(* ?Ù *)Òcount[X] b ç X ≠ ÓÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òb ç bag XÆ
+(*  2 *)Òcount[X] ç bag X è X ≠ ÓÆ
+(*  1 *)Òµ x : X; B : bag X ∑ count[X] B = (Ã x : X ∑ 0) ´ BÆ
+
+(* ?Ù *)Òcount[X] b ç X ≠ ÓÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val bag_lemma1 = Ù [X](µ b : bag X ∑ count[X] b ç X ≠ Ó): THM
+val it = Ù z ç (Ã x : X | P x ∑ f x) § z.1 ç X ± P z.1 ± f z.1 = z.2: THM
+val it = Ù (Ã x : X | P x ∑ f x) = {x : X | P x ∑ (x, f x)}: THM
+val it =
+   Ù µ x' : É
+       ∑ (µ x : X | P ∑ y = x') ± (∂ x : X | P ∑ y = x')
+         ¥ (Õ x : X | P ∑ y) = x': THM
+val it = Ù (let x ¶ 9 ∑ (x, x + x)) = (9, 9 + 9): THM
+val it = Ù z ç  y § (µ x1 : É ∑ x1 ç z ¥ x1 ç y): THM
+val it = Ù z ç  y § z Ä y: THM
+val it = Ù z ç  y § (µ x : É ∑ x ç z ¥ x ç y): THM
+val it = Ù 5 ç {1, 2, 3, 4, 5} § true: THM
+val it = Ù x ç {1, 2, 3, 4, 5} § x = 1 ≤ x = 2 ≤ x = 3 ≤ x = 4 ≤ x = 5: THM
+val it = Ù 9 ç {x : Ó | x < 12} § true: THM
+val it = Ù z ç {x, y : Ó | x < y} § {z.1, z.2} Ä Ó ± z.1 < z.2: THM
+val it =
+   Ù z ç {x, y : Ó | x < y ∑ x * y - x} § (∂ x, y : Ó | x < y ∑ x * y + ~ x = z):
+   THM
+val it = Ù (x, y) = (a, b) § x = a ± y = b: THM
+val it = Ù (x, y).1 = x: THM
+val it = Ù (x ¶ a, y ¶ b) = (x ¶ c, y ¶ d) § a = c ± b = d: THM
+val it = Ù (x ¶ a, y ¶ b).y = b: THM
+val it = Ù (a, b) ç x ∏ y § a ç x ± b ç y: THM
+val it = Ù x ∏ y = a ∏ b § (µ z : É ∑ z.1 ç x ± z.2 ç y § z.1 ç a ± z.2 ç b):
+   THM
+val it = Ù  File' = (age ¶ age', people ¶ people'): THM
+val it = Ù  File' = (age ¶ age', people ¶ people'): THM
+val it = Ù (x ¶ a, y ¶ b).y = b: THM
+val it = Ù ( File').age = age': THM
+val it = Ù z ç [x : ˙; y : Ó] § 0 º z.y: THM
+val it = Ù (x ¶ a, y ¶ b) ç [x : ˙; y : Ó] § 0 º b: THM
+val it = Ù ßa, b, c¢ = {(1, a), (2, b), (3, c)}: THM
+val it = Ù z ç ßa, b, c¢ § z ç {(1, a), (2, b), (3, c)}: THM
+val it = (): unit
+val it = (): unit
+val it = Ù z ç (≥ File) § ≥ z ç File: THM
+val it =
+   Ù z ç (File ± File2)
+       § (age ¶ z.age, people ¶ z.people) ç File
+         ± (height ¶ z.height, people ¶ z.people) ç File2: THM
+val it =
+   Ù z ç (File ≤ File2)
+       § (age ¶ z.age, people ¶ z.people) ç File
+         ≤ (height ¶ z.height, people ¶ z.people) ç File2: THM
+val it =
+   Ù z ç (File ¥ File2)
+       § (age ¶ z.age, people ¶ z.people) ç File
+         ¥ (height ¶ z.height, people ¶ z.people) ç File2: THM
+val it =
+   Ù z ç (File § File2)
+       § (age ¶ z.age, people ¶ z.people) ç File
+       § (height ¶ z.height, people ¶ z.people) ç File2: THM
+val it =
+   Ù z ç (∂ File3 | people = {} ∑ File2)
+       § (∂ x1 : É
+         ∑ ((people ¶ x1.people) ç File3
+           ± x1.people = {})
+           ± (height ¶ z.height, people ¶ x1.people) ç File2): THM
+val it =
+   Ù z ç (∂â1 File3 | people = {} ∑ File2)
+       § (∂â1 x1 : É
+         ∑ ((people ¶ x1.people) ç File3
+           ± x1.people = {})
+           ± (height ¶ z.height, people ¶ x1.people) ç File2): THM
+val it =
+   Ù z ç (µ File3 | people = {} ∑ File2)
+       § (µ x1 : É
+         ∑ (people ¶ x1.people) ç File3 ± x1.people = {}
+           ¥ (height ¶ z.height, people ¶ x1.people) ç File2): THM
+val it = Ù z ç (File'') § (age ¶ z.age'', people ¶ z.people'') ç File: THM
+val it =
+   Ù z ç (pre FileOp)
+       § z ç [age : É; i? : É; people : É | ∂ age' : É; people' : É ∑ FileOp]:
+   THM
+val it = Ù z ç (File \âs (age)) § z ç [people : É | ∂ age : É ∑ File]: THM
+val it =
+   Ù z ç (File \âs (age)) § (∂ age : É ∑ (age ¶ age, people ¶ z.people) ç File):
+   THM
+val it = Ù z ç (File [aged/age]) § (age ¶ z.aged, people ¶ z.people) ç File: THM
+val it =
+   Ù z ç (FileOp ˘âs File) § z ç ((FileOp ± File) \âs (age', i?, people')): THM
+val it =
+   Ù z ç (FileOp ªâs FileOp)
+       § z
+         ç [age : É; i? : É; people : É; age' : É; people' : É
+           | ∂ x1 : É; x2 : É
+           ∑ (age ¶ age, age' ¶ x2, i? ¶ i?, people ¶ people, people' ¶ x1)
+               ç FileOp
+             ± (age ¶ x2, age' ¶ age', i? ¶ i?, people ¶ x1, people' ¶ people')
+               ç FileOp]: THM
+val it = Ù z ç (Ñ File) § z ç [File; File']: THM
+val it = Ù z ç (ò File) § z ç [File; File' |  File =  File']: THM
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val G1_def = Ù G1 = É: THM
+val it = Ù x ç G1 § true: THM
+val it = (): unit
+val swap_def = Ù [X, Y](X swap Y = Y ∏ X): THM
+val it = Ù ˙ swap Ó = Ó ∏ ˙: THM
+val it = (): unit
+val sch_def = Ù Sch = [x, y : ˙; z : Ó | x = y ≤ y = z]: THM
+val it =
+   Ù (µ x, y : ˙; z : Ó ∑ Sch ≤ disjoint ß{x}, {y}, {z}¢)
+       § (µ x, y : ˙; z : Ó ∑ 0 º z ± (x = y ≤ y = z) ≤ disjoint ß{x}, {y}, {z}¢):
+   THM
+val it = (): unit
+val dsubs_def = Ù [X](DSUBS[X] = [set1, set2 :  X | set1 ° set2 = {}]): THM
+val it =
+   Ù (µ (DSUBS[Ó]) ∑ set1 Ä Ó ± set2 Ä Ó)
+       § (µ [set1, set2 :  Ó | set1 ° set2 = {}] ∑ set1 Ä Ó ± set2 Ä Ó): THM
+val it = (): unit
+val twice_def =
+   ¨Consistent
+       (Ã $"z'twice _'"
+         ∑ Ò¨Z'AxDes
+             (ÒÒ:¨$"z'twice _'"Æ : ˙ ≠ ˙ÆÆ
+                 ± Òµ i : ˙ ∑ ¨$"z'twice _'"Æ i = 2 * iÆ)ÆÆ)Æ
+     Ù (twice _) ç ˙ ≠ ˙ ± (µ i : ˙ ∑ twice i = 2 * i): THM
+val it = false: bool
+val it =
+   ¨Consistent
+       (Ã $"z'twice _'"
+         ∑ Ò¨Z'AxDes
+             (ÒÒ:¨$"z'twice _'"Æ : ˙ ≠ ˙ÆÆ
+                 ± Òµ i : ˙ ∑ ¨$"z'twice _'"Æ i = 2 * iÆ)ÆÆ)Æ
+     Ù twice 4 = 8: THM
+val it = true: bool
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ n : ˙ ∑ twice n = 2 * nÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òtwice n = 2 * nÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òtwice n = 2 * nÆ
+
+The subgoal  is ¡-convertible to its goal
+Tactic did not change the goal state
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val tree_def = Ù TREE = É: THM
+val tip_def =
+   Ù (tip ç TREE
+       ± fork ç Ó ∏ TREE ∏ TREE ‡ TREE)
+       ± disjoint ß{tip}, ran fork¢
+       ± (µ W :  TREE | {tip} ¿ fork ® Ó ∏ W ∏ W © Ä W ∑ TREE Ä W): THM
+val it = (): unit
+val tvar_def =
+   Ù (Tvar ç G1 ‡ TYPE
+       ± Tcon ç G1 ∏ seq TERM ‡ TYPE
+       ± Con ç G1 ∏ TYPE ‡ TERM
+       ± App ç TERM ∏ TERM ‡ TERM)
+       ± disjoint ßran Tvar, ran Tcon¢
+       ± disjoint ßran Con, ran App¢
+       ± (µ W1 :  TYPE; W2 :  TERM
+         | Tvar ® G1 © ¿ Tcon ® G1 ∏ seq W2 © Ä W1
+           ± Con ® G1 ∏ W1 © ¿ App ® W2 ∏ W2 © Ä W2
+         ∑ TYPE Ä W1 ± TERM Ä W2): THM
+val it = (): unit
+val c1 = Ù [X]((∂ f : X ‡ G1 ∑ true) § (∂ f : X ‡ G2 ∑ true)): THM
+val it = (): unit
+val it = (): unit
+val it = fn: string -> unit
+val it = fn: string -> unit
+val it = fn: string -> (string * TERM) list
+val it = fn: string -> string list
+val it = fn: string -> string -> THM
+val it = fn: string -> (string list * THM) list
+val it = fn: string -> string list
+val it = fn: string -> TERM list
+val it = fn: string -> string -> THM
+val it = fn: string -> (string list * THM) list
+val it = fn: string -> string list
+val it = fn: string -> string list
+val it = fn: string -> string -> THM
+val it = fn: string -> (string list * THM) list
+val it = fn: TERM -> THM
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òa ° (b \ c) = a ° b \ cÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ x1 : É ∑ x1 ç a ° (b \ c) § x1 ç a ° b \ cÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òx1 ç É ± true ¥ (x1 ç a ° (b \ c) § x1 ç a ° b \ c)Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)ÒP ª (Q ª R) = P ª Q ª RÆ
+
+val it = (): unit
+Tactic produced 2 subgoals:
+
+(* *** Goal "2" *** *)
+
+(*  4 *)Ò(x1, y') ç PÆ
+(*  3 *)Ò(y', y) ç QÆ
+(*  2 *)Ò(y, x2) ç RÆ
+(*  1 *)Òµ y : É ∑ ≥ ((x1, y) ç P ± (y, x2) ç Q ª R)Æ
+
+(* ?Ù *)ÒfalseÆ
+
+
+(* *** Goal "1" *** *)
+
+(*  4 *)Ò(x1, y) ç PÆ
+(*  3 *)Ò(y, y') ç QÆ
+(*  2 *)Ò(y', x2) ç RÆ
+(*  1 *)Òµ y : É ∑ ≥ ((x1, y) ç P ª Q ± (y, x2) ç R)Æ
+
+(* ?Ù *)ÒfalseÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current goal achieved, next goal is:
+
+(* *** Goal "2" *** *)
+
+(*  4 *)Ò(x1, y') ç PÆ
+(*  3 *)Ò(y', y) ç QÆ
+(*  2 *)Ò(y, x2) ç RÆ
+(*  1 *)Òµ y : É ∑ ≥ ((x1, y) ç P ± (y, x2) ç Q ª R)Æ
+
+(* ?Ù *)ÒfalseÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val it = Ù P ª (Q ª R) = P ª Q ª R: THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òx ç Ó ¥ x + y æ yÆ
+
+val it = (): unit
+Tactic produced 2 subgoals:
+
+(* *** Goal "2" *** *)
+
+(*  1 *)Ò0 º iÆ
+
+(* ?Ù *)Òi + 1 + y æ yÆ
+
+
+(* *** Goal "1" *** *)
+
+(* ?Ù *)Ò0 + y æ yÆ
+
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òx * x æ 0Æ
+
+val it = (): unit
+Tactic produced 3 subgoals:
+
+(* *** Goal "3" *** *)
+
+(*  2 *)Ò0 º i * iÆ
+(*  1 *)Ò0 º j * jÆ
+
+(* ?Ù *)Ò(i + j) * (i + j) æ 0Æ
+
+
+(* *** Goal "2" *** *)
+
+(*  1 *)Ò0 º i * iÆ
+
+(* ?Ù *)Ò~ i * ~ i æ 0Æ
+
+
+(* *** Goal "1" *** *)
+
+(* ?Ù *)Ò1 * 1 æ 0Æ
+
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ x, y : ˙ ∑ x º y ¥ 0 .. x Ä 0 .. yÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òx º yÆ
+(*  2 *)Ò0 º x1Æ
+(*  1 *)Òx1 º xÆ
+
+(* ?Ù *)Òx1 º yÆ
+
+val it = (): unit
+val it = Ù µ i, j, k : É | i º j ± j º k ∑ i º k: THM
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ x, y : ˙ ∑ ≥ x º y ¥ 0 .. y Ä 0 .. x - 1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òy < xÆ
+(*  2 *)Ò0 º x1Æ
+(*  1 *)Òx1 º yÆ
+
+(* ?Ù *)Òx1 º x + ~ 1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  4 *)Òy < xÆ
+(*  3 *)Ò0 º x1Æ
+(*  2 *)Òx1 º yÆ
+(*  1 *)Òx1 < xÆ
+
+(* ?Ù *)Òx1 º x + ~ 1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òy < xÆ
+(*  2 *)Ò0 º x1Æ
+(*  1 *)Òx1 º yÆ
+
+(* ?Ù *)Òx1 + 1 º x ¥ x1 º x + ~ 1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òy < xÆ
+(*  2 *)Ò0 º x1Æ
+(*  1 *)Òx1 º yÆ
+
+(* ?Ù *)Òx1 + 1 + ~ x º 0 ¥ x1 + ~ (x + ~ 1) º 0Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = false: bool
+val it = false: bool
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò(pre OPERATION) § classified_data ç Ó ﬂ DATA ± 0 º clear?Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò(∂ classified_data' : É
+             ∑ (classified_data ç Ó ﬂ DATA
+               ± classified_data' ç Ó ﬂ DATA)
+               ± 0 º clear?)
+           § classified_data ç Ó ﬂ DATA ± 0 º clear?Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  2 *)Òclassified_data ç Ó ﬂ DATAÆ
+(*  1 *)Ò0 º clear?Æ
+
+(* ?Ù *)Ò∂ classified_data' : É ∑ classified_data' ç Ó ﬂ DATAÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò((pre READ) ¥ (pre BADREAD)) ± ((pre READ) ± BADREAD ¥ READ)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò((∂ classified_data' : É; data! : É
+               ∑ (((classified_data ç Ó ﬂ DATA
+                 ± classified_data' ç Ó ﬂ DATA)
+                 ± 0 º clear?)
+                 ± 0 º class?
+                 ± data! ç DATA)
+                 ± class? ç dom classified_data
+                 ± class? º clear?
+                 ± data! = classified_data class?
+                 ± classified_data' = classified_data)
+             ¥ (∂ classified_data' : É; data! : É
+               ∑ (((classified_data ç Ó ﬂ DATA
+                 ± classified_data' ç Ó ﬂ DATA)
+                 ± 0 º clear?)
+                 ± 0 º class?
+                 ± data! ç DATA)
+                 ± ((((classified_data ç Ó ﬂ DATA
+                     ± classified_data' ç Ó ﬂ DATA)
+                     ± 0 º clear?)
+                     ± 0 º class?
+                     ± data! ç DATA)
+                     ± class? ç dom classified_data
+                     ± class? º clear?
+                     ± data! = classified_data class?
+                     ± classified_data' = classified_data
+                   ≤ clear? < class?
+                     ± data! = classified_data class?
+                     ± classified_data' = classified_data)))
+           ± ((∂ classified_data' : É; data! : É
+                 ∑ (((classified_data ç Ó ﬂ DATA
+                   ± classified_data' ç Ó ﬂ DATA)
+                   ± 0 º clear?)
+                   ± 0 º class?
+                   ± data! ç DATA)
+                   ± class? ç dom classified_data
+                   ± class? º clear?
+                   ± data! = classified_data class?
+                   ± classified_data' = classified_data)
+               ± (((classified_data ç Ó ﬂ DATA
+               ± classified_data' ç Ó ﬂ DATA)
+               ± 0 º clear?)
+               ± 0 º class?
+               ± data! ç DATA)
+               ± ((((classified_data ç Ó ﬂ DATA
+                   ± classified_data' ç Ó ﬂ DATA)
+                   ± 0 º clear?)
+                   ± 0 º class?
+                   ± data! ç DATA)
+                   ± class? ç dom classified_data
+                   ± class? º clear?
+                   ± data! = classified_data class?
+                   ± classified_data' = classified_data
+                 ≤ clear? < class?
+                   ± data! = classified_data class?
+                   ± classified_data' = classified_data)
+             ¥ (((classified_data ç Ó ﬂ DATA
+               ± classified_data' ç Ó ﬂ DATA)
+               ± 0 º clear?)
+               ± 0 º class?
+               ± data! ç DATA)
+               ± class? ç dom classified_data
+               ± class? º clear?
+               ± data! = classified_data class?
+               ± classified_data' = classified_data)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  9 *)Òclassified_data ç Ó ﬂ DATAÆ
+(*  8 *)Òclassified_data' ç Ó ﬂ DATAÆ
+(*  7 *)Ò0 º clear?Æ
+(*  6 *)Ò0 º class?Æ
+(*  5 *)Òdata! ç DATAÆ
+(*  4 *)Òclass? ç dom classified_dataÆ
+(*  3 *)Òclass? º clear?Æ
+(*  2 *)Òdata! = classified_data class?Æ
+(*  1 *)Òclassified_data' = classified_dataÆ
+
+(* ?Ù *)Ò∂ classified_data'' : É; data!' : É
+           ∑ (classified_data'' ç Ó ﬂ DATA
+             ± data!' ç DATA)
+             ± ((classified_data'' ç Ó ﬂ DATA
+                 ± data!' ç DATA)
+                 ± data!' = classified_data class?
+                 ± classified_data'' = classified_data
+               ≤ clear? < class?
+                 ± data!' = classified_data class?
+                 ± classified_data'' = classified_data)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  9 *)Òclassified_data ç Ó ﬂ DATAÆ
+(*  8 *)Òclassified_data' ç Ó ﬂ DATAÆ
+(*  7 *)Ò0 º clear?Æ
+(*  6 *)Ò0 º class?Æ
+(*  5 *)Òdata! ç DATAÆ
+(*  4 *)Òclass? ç dom classified_dataÆ
+(*  3 *)Òclass? º clear?Æ
+(*  2 *)Òdata! = classified_data class?Æ
+(*  1 *)Òclassified_data' = classified_dataÆ
+
+(* ?Ù *)Òclassified_data class? ç DATA
+           ± (classified_data class? ç DATA ≤ clear? < class?)Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ kernel : KERNEL; appl : APPLICATION
+           ∑ kernel ç secure_kernel ¥ construction (appl, kernel) ç secureÆ
+
+val it = (): unit
+val secure_kernel_sim =
+   Ù µ kernel : É
+       ∑ kernel ç secure_kernel
+         § kernel ç KERNEL
+           ± (µ appl : APPLICATION ∑ construction (appl, kernel) ç secure): THM
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ kernel : KERNEL; appl : APPLICATION
+           ∑ kernel ç KERNEL
+               ± (µ appl : APPLICATION ∑ construction (appl, kernel) ç secure)
+             ¥ construction (appl, kernel) ç secureÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òkernel ç KERNELÆ
+(*  2 *)Òappl ç APPLICATIONÆ
+(*  1 *)Òµ appl : APPLICATION ∑ construction (appl, kernel) ç secureÆ
+
+(* ?Ù *)Òconstruction (appl, kernel) ç secureÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+val it = (): unit
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ x, y : ˙ ∑ x º y ¥ 0 .. x Ä 0 .. yÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òx º yÆ
+(*  2 *)Ò0 º x1Æ
+(*  1 *)Òx1 º xÆ
+
+(* ?Ù *)Òx1 º yÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val le_dots_lemma1 = Ù µ x, y : ˙ ∑ x º y ¥ 0 .. x Ä 0 .. y: THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ x, y : ˙ ∑ ≥ x º y ¥ 0 .. y Ä 0 .. x - 1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òy < xÆ
+(*  2 *)Ò0 º x1Æ
+(*  1 *)Òx1 º yÆ
+
+(* ?Ù *)Òx1 º x + ~ 1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  4 *)Òy < xÆ
+(*  3 *)Ò0 º x1Æ
+(*  2 *)Òx1 º yÆ
+(*  1 *)Òx1 < xÆ
+
+(* ?Ù *)Òx1 º x + ~ 1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òy < xÆ
+(*  2 *)Ò0 º x1Æ
+(*  1 *)Òx1 º yÆ
+
+(* ?Ù *)Òx1 + 1 º x ¥ x1 º x + ~ 1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òy < xÆ
+(*  2 *)Ò0 º x1Æ
+(*  1 *)Òx1 º yÆ
+
+(* ?Ù *)Òx1 + 1 + ~ x º 0 ¥ x1 + ~ (x + ~ 1) º 0Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val le_dots_lemma2 = Ù µ x, y : ˙ ∑ ≥ x º y ¥ 0 .. y Ä 0 .. x - 1: THM
+val ∏_fc_thm =
+   Ù µ v : É; w : É; V : É; W : É ∑ v ç V ± w ç W ¥ (v, w) ç V ∏ W: THM
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òkernel_implementation ç secure_kernelÆ
+
+val it = (): unit
+val specs =
+   [Ù µ kernel : É
+        ∑ kernel ç secure_kernel
+          § kernel ç KERNEL
+            ± (µ appl : APPLICATION ∑ construction (appl, kernel) ç secure),
+    Ù µ sys : É
+        ∑ sys ç secure § sys ç SYSTEM ± sys ç state_secure ± sys ç out_secure,
+    Ù µ sys : É
+        ∑ sys ç state_secure
+          § sys ç SYSTEM
+            ± (µ class, clear : Ó; inp : IN; s, s' : STATE2
+              | (0 .. class) Ú s = (0 .. class) Ú s'
+              ∑ (0 .. class) Ú first (sys (clear, inp, s))
+                = (0 .. class) Ú first (sys (clear, inp, s'))),
+    Ù µ sys : É
+        ∑ sys ç out_secure
+          § sys ç SYSTEM
+            ± (µ clear : Ó; inp : IN; s, s' : STATE2
+              | (0 .. clear) Ú s = (0 .. clear) Ú s'
+              ∑ second (sys (clear, inp, s)) = second (sys (clear, inp, s')))]:
+   THM list
+Tactic produced 6 subgoals:
+
+(* *** Goal "6" *** *)
+
+(*  6 *)Òappl ç APPLICATIONÆ
+(*  5 *)Òclear ç ÓÆ
+(*  4 *)Òinp ç INÆ
+(*  3 *)Òs ç STATE2Æ
+(*  2 *)Òs' ç STATE2Æ
+(*  1 *)Ò(0 .. clear) Ú s = (0 .. clear) Ú s'Æ
+
+(* ?Ù *)Ò(construction (appl, kernel_implementation) (clear, inp, s)).2
+           = (construction (appl, kernel_implementation) (clear, inp, s')).2Æ
+
+
+(* *** Goal "5" *** *)
+
+(*  1 *)Òappl ç APPLICATIONÆ
+
+(* ?Ù *)Òconstruction (appl, kernel_implementation) ç SYSTEMÆ
+
+
+(* *** Goal "4" *** *)
+
+(*  7 *)Òappl ç APPLICATIONÆ
+(*  6 *)Òclass ç ÓÆ
+(*  5 *)Òclear ç ÓÆ
+(*  4 *)Òinp ç INÆ
+(*  3 *)Òs ç STATE2Æ
+(*  2 *)Òs' ç STATE2Æ
+(*  1 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (construction (appl, kernel_implementation) (clear, inp, s)).1
+           = (0 .. class)
+               Ú (construction (appl, kernel_implementation) (clear, inp, s')).1Æ
+
+
+(* *** Goal "3" *** *)
+
+(*  1 *)Òappl ç APPLICATIONÆ
+
+(* ?Ù *)Òconstruction (appl, kernel_implementation) ç SYSTEMÆ
+
+
+(* *** Goal "2" *** *)
+
+(*  1 *)Òappl ç APPLICATIONÆ
+
+(* ?Ù *)Òconstruction (appl, kernel_implementation) ç SYSTEMÆ
+
+
+(* *** Goal "1" *** *)
+
+(* ?Ù *)Òkernel_implementation ç KERNELÆ
+
+The subgoal 2 duplicates goals labelled 3, 5
+The subgoal 3 duplicates goals labelled 2, 5
+val it = (): unit
+val condec = Ù construction ç APPLICATION ∏ KERNEL ≠ SYSTEM: THM
+val conpred =
+   Ù µ appl : APPLICATION; kernel : KERNEL
+       ∑ construction (appl, kernel) = kernel appl: THM
+val kidec = Ù kernel_implementation ç KERNEL: THM
+val kipred =
+   Ù µ clear : Ó; inp : IN; state : STATE2; appl : APPLICATION
+       ∑ kernel_implementation appl (clear, inp, state)
+         = (state ´ (0 .. clear - 1) · first (appl (inp, (0 .. clear) Ú state)),
+           second (appl (inp, (0 .. clear) Ú state))): THM
+Tactic produced 0 subgoals:
+Current goal achieved, next goal is:
+
+(* *** Goal "2" *** *)
+
+(*  1 *)Òappl ç APPLICATIONÆ
+
+(* ?Ù *)Òconstruction (appl, kernel_implementation) ç SYSTEMÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "2" *** *)
+
+(*  3 *)Òappl ç APPLICATIONÆ
+(*  2 *)Òkernel_implementation ç KERNELÆ
+(*  1 *)Òconstruction ç APPLICATION ∏ KERNEL ≠ SYSTEMÆ
+
+(* ?Ù *)Òconstruction (appl, kernel_implementation) ç SYSTEMÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "2" *** *)
+
+(*  4 *)Òappl ç APPLICATIONÆ
+(*  3 *)Òkernel_implementation ç KERNELÆ
+(*  2 *)Òconstruction ç APPLICATION ∏ KERNEL ≠ SYSTEMÆ
+(*  1 *)Ò(appl, kernel_implementation) ç APPLICATION ∏ KERNELÆ
+
+(* ?Ù *)Òconstruction (appl, kernel_implementation) ç SYSTEMÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current goal achieved, next goal is:
+
+(* *** Goal "4" *** *)
+
+(*  7 *)Òappl ç APPLICATIONÆ
+(*  6 *)Òclass ç ÓÆ
+(*  5 *)Òclear ç ÓÆ
+(*  4 *)Òinp ç INÆ
+(*  3 *)Òs ç STATE2Æ
+(*  2 *)Òs' ç STATE2Æ
+(*  1 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (construction (appl, kernel_implementation) (clear, inp, s)).1
+           = (0 .. class)
+               Ú (construction (appl, kernel_implementation) (clear, inp, s')).1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "4" *** *)
+
+(*  8 *)Òappl ç APPLICATIONÆ
+(*  7 *)Òclass ç ÓÆ
+(*  6 *)Òclear ç ÓÆ
+(*  5 *)Òinp ç INÆ
+(*  4 *)Òs ç STATE2Æ
+(*  3 *)Òs' ç STATE2Æ
+(*  2 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  1 *)Òkernel_implementation ç KERNELÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (construction (appl, kernel_implementation) (clear, inp, s)).1
+           = (0 .. class)
+               Ú (construction (appl, kernel_implementation) (clear, inp, s')).1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "4" *** *)
+
+(*  8 *)Òappl ç APPLICATIONÆ
+(*  7 *)Òclass ç ÓÆ
+(*  6 *)Òclear ç ÓÆ
+(*  5 *)Òinp ç INÆ
+(*  4 *)Òs ç STATE2Æ
+(*  3 *)Òs' ç STATE2Æ
+(*  2 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  1 *)Òkernel_implementation ç KERNELÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (s ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s)).1)
+           = (0 .. class)
+               Ú (s' ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)Æ
+
+val it = (): unit
+Tactic produced 2 subgoals:
+
+(* *** Goal "4.2" *** *)
+
+(*  9 *)Òappl ç APPLICATIONÆ
+(*  8 *)Òclass ç ÓÆ
+(*  7 *)Òclear ç ÓÆ
+(*  6 *)Òinp ç INÆ
+(*  5 *)Òs ç STATE2Æ
+(*  4 *)Òs' ç STATE2Æ
+(*  3 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  2 *)Òkernel_implementation ç KERNELÆ
+(*  1 *)Ò≥ clear º classÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (s ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s)).1)
+           = (0 .. class)
+               Ú (s' ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)Æ
+
+
+(* *** Goal "4.1" *** *)
+
+(*  9 *)Òappl ç APPLICATIONÆ
+(*  8 *)Òclass ç ÓÆ
+(*  7 *)Òclear ç ÓÆ
+(*  6 *)Òinp ç INÆ
+(*  5 *)Òs ç STATE2Æ
+(*  4 *)Òs' ç STATE2Æ
+(*  3 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  2 *)Òkernel_implementation ç KERNELÆ
+(*  1 *)Òclear º classÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (s ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s)).1)
+           = (0 .. class)
+               Ú (s' ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "4.1" *** *)
+
+(* 10 *)Òappl ç APPLICATIONÆ
+(*  9 *)Òclass ç ÓÆ
+(*  8 *)Òclear ç ÓÆ
+(*  7 *)Òinp ç INÆ
+(*  6 *)Òs ç STATE2Æ
+(*  5 *)Òs' ç STATE2Æ
+(*  4 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  3 *)Òkernel_implementation ç KERNELÆ
+(*  2 *)Òclear º classÆ
+(*  1 *)Ò0 .. clear Ä 0 .. classÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (s ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s)).1)
+           = (0 .. class)
+               Ú (s' ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)Æ
+
+val it = (): unit
+val set_lemma_1 =
+   Ù µ A, B : É; x, x' : É ∑ A Ä B ¥ B Ú x = B Ú x' ¥ A Ú x = A Ú x': THM
+Tactic produced 1 subgoal:
+
+(* *** Goal "4.1" *** *)
+
+(* 10 *)Òappl ç APPLICATIONÆ
+(*  9 *)Òclass ç ÓÆ
+(*  8 *)Òclear ç ÓÆ
+(*  7 *)Òinp ç INÆ
+(*  6 *)Òs ç STATE2Æ
+(*  5 *)Òs' ç STATE2Æ
+(*  4 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  3 *)Òkernel_implementation ç KERNELÆ
+(*  2 *)Òclear º classÆ
+(*  1 *)Ò0 .. clear Ä 0 .. classÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (s ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)
+           = (0 .. class)
+               Ú (s' ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)Æ
+
+val it = (): unit
+val set_lemma_2 =
+   Ù µ A : É; x, x', y : É ∑ A Ú x = A Ú x' ¥ A Ú (x ´ y) = A Ú (x' ´ y): THM
+Tactic produced 0 subgoals:
+Current goal achieved, next goal is:
+
+(* *** Goal "4.2" *** *)
+
+(*  9 *)Òappl ç APPLICATIONÆ
+(*  8 *)Òclass ç ÓÆ
+(*  7 *)Òclear ç ÓÆ
+(*  6 *)Òinp ç INÆ
+(*  5 *)Òs ç STATE2Æ
+(*  4 *)Òs' ç STATE2Æ
+(*  3 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  2 *)Òkernel_implementation ç KERNELÆ
+(*  1 *)Ò≥ clear º classÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (s ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s)).1)
+           = (0 .. class)
+               Ú (s' ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)Æ
+
+val it = (): unit
+val set_lemma_3 =
+   Ù µ A, B : É; x, x' : É; st, st' : É
+       ∑ A Ú x = A Ú x' ¥ A Ä B ¥ A Ú (x ´ B · st) = A Ú (x' ´ B · st'): THM
+Tactic produced 0 subgoals:
+Current goal achieved, next goal is:
+
+(* *** Goal "6" *** *)
+
+(*  6 *)Òappl ç APPLICATIONÆ
+(*  5 *)Òclear ç ÓÆ
+(*  4 *)Òinp ç INÆ
+(*  3 *)Òs ç STATE2Æ
+(*  2 *)Òs' ç STATE2Æ
+(*  1 *)Ò(0 .. clear) Ú s = (0 .. clear) Ú s'Æ
+
+(* ?Ù *)Ò(construction (appl, kernel_implementation) (clear, inp, s)).2
+           = (construction (appl, kernel_implementation) (clear, inp, s')).2Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val kernel_secure_thm = Ù kernel_implementation ç secure_kernel: THM
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val price = Ù price ç Ó ± true: THM
+val VMSTATE = Ù VMSTATE = [stock, takings : Ó]: THM
+val VM_operation =
+   Ù VM_operation
+       = [(Ñ VMSTATE); cash_tendered?, cash_refunded! : Ó; bars_delivered! : Ó]:
+   THM
+val exact_cash = Ù exact_cash = [cash_tendered? : Ó | cash_tendered? = price]:
+   THM
+val insufficient_cash =
+   Ù insufficient_cash = [cash_tendered? : Ó | cash_tendered? < price]: THM
+val some_stock = Ù some_stock = [stock : Ó | stock > 0]: THM
+val VM_sale =
+   Ù VM_sale
+       = [VM_operation
+         | stock' = stock - 1
+         ± bars_delivered! = 1
+         ± cash_refunded! = cash_tendered? - price
+         ± takings' = takings + price]: THM
+val VM_nosale =
+   Ù VM_nosale
+       = [VM_operation
+         | stock' = stock
+         ± bars_delivered! = 0
+         ± cash_refunded! = cash_tendered?
+         ± takings' = takings]: THM
+val VM1 = Ù VM1 = (exact_cash ± some_stock ± VM_sale): THM
+val VM2 = Ù VM2 = (insufficient_cash ± VM_nosale): THM
+val VM3 = Ù VM3 = (VM1 ≤ VM2): THM
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò∂ VM3 ∑ trueÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  1 *)Òµ VM3 ∑ falseÆ
+
+(* ?Ù *)ÒfalseÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  2 *)Òµ VM3 ∑ falseÆ
+(*  1 *)Ò≥
+         (bars_delivered! ¶ 1, cash_refunded! ¶ 0, cash_tendered? ¶ price,
+                 stock ¶ 1, stock' ¶ 0, takings ¶ 0, takings' ¶ price)
+             ç VM3Æ
+
+(* ?Ù *)ÒfalseÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  1 *)Òµ VM3 ∑ falseÆ
+
+(* ?Ù *)Ò(bars_delivered! ¶ 1, cash_refunded! ¶ 0, cash_tendered? ¶ price,
+               stock ¶ 1, stock' ¶ 0, takings ¶ 0, takings' ¶ price)
+           ç VM3Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  1 *)Òµ VM3 ∑ falseÆ
+
+(* ?Ù *)Ò0 º price
+           ≤ (bars_delivered! ¶ 1, cash_refunded! ¶ 0, cash_tendered? ¶ price,
+                 stock ¶ 1, stock' ¶ 0, takings ¶ 0, takings' ¶ price)
+             ç VM2Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  2 *)Òµ VM3 ∑ falseÆ
+(*  1 *)Ò0 º priceÆ
+
+(* ?Ù *)Ò0 º price
+           ≤ (bars_delivered! ¶ 1, cash_refunded! ¶ 0, cash_tendered? ¶ price,
+                 stock ¶ 1, stock' ¶ 0, takings ¶ 0, takings' ¶ price)
+             ç VM2Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val VM3_non_empty = Ù ∂ VM3 ∑ true: THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò≥ (insufficient_cash ± exact_cash)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò≥
+         ((0 º cash_tendered?
+             ± cash_tendered? < price)
+             ± 0 º cash_tendered?
+             ± cash_tendered? = price)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò≥
+         ((cash_tendered? - 0 ç Ó
+             ± price - (cash_tendered? + 1) ç Ó)
+             ± cash_tendered? - 0 ç Ó
+             ± cash_tendered? = price)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò≥
+         ((0 º cash_tendered?
+             ± 0 º price + ~ (cash_tendered? + 1))
+             ± 0 º cash_tendered?
+             ± cash_tendered? = price)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò≥
+         ((0 º cash_tendered?
+             ± 0 º price + ~ cash_tendered? + ~ 1)
+             ± 0 º cash_tendered?
+             ± cash_tendered? = price)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  2 *)Ò0 º cash_tendered?Æ
+(*  1 *)Òcash_tendered? = priceÆ
+
+(* ?Ù *)Ò≥ (0 º cash_tendered? ± 0 º price + ~ cash_tendered? + ~ 1)Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val cash_lemma = Ù ≥ (insufficient_cash ± exact_cash): THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò((pre VM1) ¥ (pre VM3)) ± ((pre VM1) ± VM3 ¥ VM1)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò((∂ bars_delivered! : É; cash_refunded! : É; stock' : É; takings' : É
+               ∑ exact_cash ± some_stock ± VM_sale)
+             ¥ (∂ bars_delivered! : É;
+                 cash_refunded! : É;
+                 stock' : É;
+                 takings' : É
+               ∑ exact_cash ± some_stock ± VM_sale
+                 ≤ insufficient_cash ± VM_nosale))
+           ± ((∂ bars_delivered! : É;
+                   cash_refunded! : É;
+                   stock' : É;
+                   takings' : É
+                 ∑ exact_cash ± some_stock ± VM_sale)
+               ± (exact_cash ± some_stock ± VM_sale
+                 ≤ insufficient_cash ± VM_nosale)
+             ¥ exact_cash ± some_stock ± VM_sale)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  1 *)Ò≥ insufficient_cashÆ
+
+(* ?Ù *)Ò(∂ bars_delivered! : É; cash_refunded! : É; stock' : É; takings' : É
+               ∑ exact_cash ± some_stock ± VM_sale)
+             ± exact_cash
+             ± some_stock
+             ± VM_sale
+           ¥ exact_cash ± some_stock ± VM_saleÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val VM3_refines_VM1 = Ù ((pre VM1) ¥ (pre VM3)) ± ((pre VM1) ± VM3 ¥ VM1): THM
+val it = (): unit
+val VM_ok =
+   Ù µ vm : É
+       ∑ vm ç VM_ok
+         § vm ç  VM_operation
+           ± (µ VM_operation
+             ∑ vm ¥ takings' - takings æ price * (stock - stock')): THM
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)ÒVM3 ç VM_okÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò(µ x1 : É; x2 : É; x3 : É; x4 : É; x5 : É; x6 : É; x7 : É
+             ∑ (cash_tendered? ¶ x3) ç exact_cash
+                   ± (stock ¶ x4) ç some_stock
+                   ± (((0 º x4
+                   ± 0 º x6)
+                   ± 0 º x5
+                   ± 0 º x7)
+                   ± (0 º x3
+                   ± 0 º x2)
+                   ± 0 º x1)
+                   ± x5 = x4 + ~ 1
+                   ± x1 = 1
+                   ± x2 = x3 + ~ price
+                   ± x7 = x6 + price
+                 ≤ (cash_tendered? ¶ x3) ç insufficient_cash
+                   ± (((0 º x4
+                   ± 0 º x6)
+                   ± 0 º x5
+                   ± 0 º x7)
+                   ± (0 º x3
+                   ± 0 º x2)
+                   ± 0 º x1)
+                   ± x5 = x4
+                   ± x1 = 0
+                   ± x2 = x3
+                   ± x7 = x6
+               ¥ ((0 º x4
+                 ± 0 º x6)
+                 ± 0 º x5
+                 ± 0 º x7)
+                 ± (0 º x3
+                 ± 0 º x2)
+                 ± 0 º x1)
+           ± (µ [(Ñ [stock, takings : Ó]);
+                 cash_tendered?, cash_refunded! : Ó;
+                 bars_delivered! : Ó]
+             ∑ exact_cash
+                   ± some_stock
+                   ± (((0 º stock
+                   ± 0 º takings)
+                   ± 0 º stock'
+                   ± 0 º takings')
+                   ± (0 º cash_tendered?
+                   ± 0 º cash_refunded!)
+                   ± 0 º bars_delivered!)
+                   ± stock' = stock + ~ 1
+                   ± bars_delivered! = 1
+                   ± cash_refunded! = cash_tendered? + ~ price
+                   ± takings' = takings + price
+                 ≤ insufficient_cash
+                   ± (((0 º stock
+                   ± 0 º takings)
+                   ± 0 º stock'
+                   ± 0 º takings')
+                   ± (0 º cash_tendered?
+                   ± 0 º cash_refunded!)
+                   ± 0 º bars_delivered!)
+                   ± stock' = stock
+                   ± bars_delivered! = 0
+                   ± cash_refunded! = cash_tendered?
+                   ± takings' = takings
+               ¥ price * (stock + ~ stock') º takings' + ~ takings)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* 13 *)Ò0 º stockÆ
+(* 12 *)Ò0 º takingsÆ
+(* 11 *)Ò0 º stock'Æ
+(* 10 *)Ò0 º takings'Æ
+(*  9 *)Ò0 º cash_tendered?Æ
+(*  8 *)Ò0 º cash_refunded!Æ
+(*  7 *)Ò0 º bars_delivered!Æ
+(*  6 *)Òexact_cashÆ
+(*  5 *)Òsome_stockÆ
+(*  4 *)Òstock' = stock + ~ 1Æ
+(*  3 *)Òbars_delivered! = 1Æ
+(*  2 *)Òcash_refunded! = cash_tendered? + ~ priceÆ
+(*  1 *)Òtakings' = takings + priceÆ
+
+(* ?Ù *)Òprice * (stock + ~ (stock + ~ 1)) º takings + price + ~ takingsÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* 13 *)Ò0 º stockÆ
+(* 12 *)Ò0 º takingsÆ
+(* 11 *)Ò0 º stock'Æ
+(* 10 *)Ò0 º takings'Æ
+(*  9 *)Ò0 º cash_tendered?Æ
+(*  8 *)Ò0 º cash_refunded!Æ
+(*  7 *)Ò0 º bars_delivered!Æ
+(*  6 *)Òexact_cashÆ
+(*  5 *)Òsome_stockÆ
+(*  4 *)Òstock' = stock + ~ 1Æ
+(*  3 *)Òbars_delivered! = 1Æ
+(*  2 *)Òcash_refunded! = cash_tendered? + ~ priceÆ
+(*  1 *)Òtakings' = takings + priceÆ
+
+(* ?Ù *)Òprice º takings + price + ~ takingsÆ
+
+val it = (): unit
+val it =
+   Ù µ i : É
+       ∑ µ j, k : É
+         ∑ j + i = i + j ± i + j + k = i + (j + k) ± j + (i + k) = i + (j + k):
+   THM
+val it =
+   Ù ~ takings ç É ± true
+       ¥ (µ j, k : É
+         ∑ j + ~ takings = ~ takings + j
+           ± ~ takings + j + k = ~ takings + (j + k)
+           ± j + (~ takings + k) = ~ takings + (j + k)): THM
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* 13 *)Ò0 º stockÆ
+(* 12 *)Ò0 º takingsÆ
+(* 11 *)Ò0 º stock'Æ
+(* 10 *)Ò0 º takings'Æ
+(*  9 *)Ò0 º cash_tendered?Æ
+(*  8 *)Ò0 º cash_refunded!Æ
+(*  7 *)Ò0 º bars_delivered!Æ
+(*  6 *)Òexact_cashÆ
+(*  5 *)Òsome_stockÆ
+(*  4 *)Òstock' = stock + ~ 1Æ
+(*  3 *)Òbars_delivered! = 1Æ
+(*  2 *)Òcash_refunded! = cash_tendered? + ~ priceÆ
+(*  1 *)Òtakings' = takings + priceÆ
+
+(* ?Ù *)Òprice º ~ takings + (takings + price)Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val VM3_ok_thm = Ù VM3 ç VM_ok: THM
++++ Compiled usr023_slides.sml: OK (Compilation Run Complete) +++
+val it = (): unit
+touch usr011.tutorial
+docsml usr011X
+zed -d example_zed -f wrk051_delete_theories_zexercises.sml -f usr011X.sml
+val it = (): unit
+val it = (): unit
+=== ProofPower 3.1w8 [HOL/Z Database]
+=== Copyright (C) Lemma 1 Ltd. 2000-2018
+Database name: /home/debian/pp/tmp_build/example_zed
+:) val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
++++ Compiled wrk051_delete_theories_zexercises.sml: OK +++
+val setlg = fn: ''a -> (''a * TERM) list -> unit
+val prove_and_store = fn: string * TERM -> THM
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val PM2 =
+   [("*2.02", Òq ¥ p ¥ qÆ), ("*2.03", Ò(p ¥ ≥ q) ¥ q ¥ ≥ pÆ),
+    ("*2.15", Ò(≥ p ¥ q) ¥ ≥ q ¥ pÆ), ("*2.16", Ò(p ¥ q) ¥ ≥ q ¥ ≥ pÆ),
+    ("*2.17", Ò(≥ q ¥ ≥ p) ¥ p ¥ qÆ), ("*2.04", Ò(p ¥ q ¥ r) ¥ q ¥ p ¥ rÆ),
+    ("*2.05", Ò(q ¥ r) ¥ (p ¥ q) ¥ p ¥ rÆ),
+    ("*2.06", Ò(p ¥ q) ¥ (q ¥ r) ¥ p ¥ rÆ), ("*2.08", Òp ¥ pÆ),
+    ("*2.21", Ò≥ p ¥ p ¥ qÆ)]: (string * TERM) list
+val PM3 =
+   [("*3.01", Òp ± q § ≥ (≥ p ≤ ≥ q)Æ), ("*3.2", Òp ¥ q ¥ p ± qÆ),
+    ("*3.26", Òp ± q ¥ pÆ), ("*3.27", Òp ± q ¥ qÆ),
+    ("*3.3", Ò(p ± q ¥ r) ¥ p ¥ q ¥ rÆ), ("*3.31", Ò(p ¥ q ¥ r) ¥ p ± q ¥ rÆ),
+    ("*3.35", Òp ± (p ¥ q) ¥ qÆ), ("*3.43", Ò(p ¥ q) ± (p ¥ r) ¥ p ¥ q ± rÆ),
+    ("*3.45", Ò(p ¥ q) ¥ p ± r ¥ q ± rÆ),
+    ("*3.47", Ò(p ¥ r) ± (q ¥ s) ¥ p ± q ¥ r ± sÆ)]: (string * TERM) list
+val PM4 =
+   [("*4.1", Òp ¥ q § ≥ q ¥ ≥ pÆ), ("*4.11", Ò(p § q) § ≥ p § ≥ qÆ),
+    ("*4.13", Òp § ≥ ≥ pÆ), ("*4.2", Òp § pÆ), ("*4.21", Ò(p § q) § q § pÆ),
+    ("*4.22", Ò(p § q) ± (q § r) ¥ (p § r)Æ), ("*4.24", Òp § p ± pÆ),
+    ("*4.25", Òp § p ≤ pÆ), ("*4.3", Òp ± q § q ± pÆ),
+    ("*4.31", Òp ≤ q § q ≤ pÆ), ("*4.33", Ò(p ± q) ± r § p ± q ± rÆ),
+    ("*4.4", Òp ± (q ≤ r) § p ± q ≤ p ± rÆ),
+    ("*4.41", Òp ≤ q ± r § (p ≤ q) ± (p ≤ r)Æ), ("*4.71", Òp ¥ q § p § p ± qÆ),
+    ("*4.73", Òq ¥ (p § p ± q)Æ)]: (string * TERM) list
+val PM5 =
+   [("*5.1", Òp ± q ¥ (p § q)Æ), ("*5.32", Ò(p ¥ (q § r)) ¥ (p ± q § p ± r)Æ),
+    ("*5.6", Ò(p ± ≥ q ¥ r) ¥ p ¥ q ≤ rÆ)]: (string * TERM) list
+val PM9 =
+   [("*9.01", Ò[X](≥ (µ x : X ∑ ∆ x) § (∂ x : X ∑ ≥ ∆ x))Æ),
+    ("*9.02", Ò[X](≥ (∂ x : X ∑ ∆ x) § (µ x : X ∑ ≥ ∆ x))Æ),
+    ("*9.03", Ò[X]((µ x : X ∑ ∆ x ≤ p) § (µ x : X ∑ ∆ x) ≤ p)Æ),
+    ("*9.04", Ò[X](p ≤ (µ x : X ∑ ∆ x) § (µ x : X ∑ p ≤ ∆ x))Æ),
+    ("*9.05",
+     Ò[X]((∂ x : X ∑ true) ¥ ((∂ x : X ∑ ∆ x ≤ p) § (∂ x : X ∑ ∆ x) ≤ p))Æ),
+    ("*9.06", Ò[X](p ≤ (∂ x : X ∑ ∆ x) § p ≤ (∂ x : X ∑ ∆ x))Æ)]:
+   (string * TERM) list
+val PM10 =
+   [("*10.01", Ò[X]((∂ x : X ∑ ∆ x) § ≥ (µ y : X ∑ ≥ ∆ y))Æ),
+    ("*10.1", Ò(µ x : É ∑ ∆ x) ¥ ∆ yÆ),
+    ("*10.21", Ò[X]((µ x : X ∑ p ¥ ∆ x) § p ¥ (µ y : X ∑ ∆ y))Æ),
+    ("*10.22", Ò[X]((µ x : X ∑ ∆ x ± Ÿ x) § (µ y : X ∑ ∆ y) ± (µ z : X ∑ Ÿ z))Æ),
+    ("*10.24", Ò[X]((µ x : X ∑ ∆ x ¥ p) § (∂ y : X ∑ ∆ y) ¥ p)Æ),
+    ("*10.27", Ò[X]((µ x : X ∑ ∆ x ¥ Ÿ x) ¥ (µ y : X ∑ ∆ y) ¥ (µ z : X ∑ Ÿ z))Æ),
+    ("*10.28", Ò[X]((µ x : X ∑ ∆ x ¥ Ÿ x) ¥ (∂ y : X ∑ ∆ y) ¥ (∂ z : X ∑ Ÿ z))Æ),
+    ("*10.35", Ò[X]((∂ x : X ∑ p ± ∆ x) § p ± (∂ y : X ∑ ∆ y))Æ),
+    ("*10.42", Ò[X]((∂ x : X ∑ ∆ x) ≤ (∂ y : X ∑ Ÿ y) § (∂ z : X ∑ ∆ z ≤ Ÿ z))Æ),
+    ("*10.5", Ò[X]((∂ x : X ∑ ∆ x ± Ÿ x) ¥ (∂ y : X ∑ ∆ y) ± (∂ z : X ∑ Ÿ z))Æ),
+    ("*10.51", Ò[X](≥ (∂ x : X ∑ ∆ x ± Ÿ x) ¥ (µ y : X ∑ ∆ y ¥ ≥ Ÿ y))Æ)]:
+   (string * TERM) list
+val PM10b =
+   [("*10.271",
+     Ò[X]((µ x : X ∑ ∆ x § Ÿ x) ¥ ((µ y : X ∑ ∆ y) § (µ z : X ∑ Ÿ z)))Æ),
+    ("*10.281",
+     Ò[X]((µ x : X ∑ ∆ x § Ÿ x) ¥ ((∂ y : X ∑ ∆ y) § (∂ z : X ∑ Ÿ z)))Æ)]:
+   (string * TERM) list
+val PM11 =
+   [("*11.1", Ò(µ x, y : É ∑ ∆ (x, y)) ¥ ∆ (z, w)Æ),
+    ("*11.2", Ò[X]((µ x, y : X ∑ ∆ (x, y)) § (µ y, x : X ∑ ∆ (x, y)))Æ),
+    ("*11.3", Ò[Y](p ¥ (µ x, y : Y ∑ ∆ (x, y)) § (µ x, y : Y ∑ p ¥ ∆ (x, y)))Æ),
+    ("*11.35", Ò[Y]((µ x, y : Y ∑ ∆ (x, y) ¥ p) § (∂ x, y : Y ∑ ∆ (x, y)) ¥ p)Æ)]:
+   (string * TERM) list
+val PM11b =
+   [("*11.32",
+     Ò[Y]((µ x, y : Y ∑ ∆ (x, y) ¥ Ÿ (x, y))
+       ¥ (µ x, y : Y ∑ ∆ (x, y))
+       ¥ (µ x, y : Y ∑ Ÿ (x, y)))Æ),
+    ("*11.45",
+     Ò[Y]((∂ x, y : Y ∑ true)
+       ¥ ((∂ x, y : Y ∑ p ¥ ∆ (x, y)) § p ¥ (∂ x, y : Y ∑ ∆ (x, y))))Æ),
+    ("*11.54",
+     Ò[Y]((∂ x, y : Y ∑ ∆ x ± Ÿ y) § (∂ x : Y ∑ ∆ x) ± (∂ y : Y ∑ Ÿ y))Æ),
+    ("*11.55",
+     Ò[Y]((∂ x, y : Y ∑ ∆ x ± Ÿ (x, y)) § (∂ x : Y ∑ ∆ x ± (∂ y : Y ∑ Ÿ (x, y))))Æ),
+    ("*11.6",
+     Ò[X]((∂ x : X ∑ (∂ y : Y ∑ ∆ (x, y) ± Ÿ y) ± — x)
+       § (∂ y : Y ∑ (∂ x : X ∑ ∆ (x, y) ± — x) ± Ÿ y))Æ),
+    ("*11.62",
+     Ò(µ x : X; y : Y ∑ ∆ x ± Ÿ (x, y) ¥ — (x, y))
+       § (µ x : X ∑ ∆ x ¥ (µ y : Y ∑ Ÿ (x, y) ¥ — (x, y)))Æ)]:
+   (string * TERM) list
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val ZE1 =
+   [("ZE1.1", Ò(2, 4) ç (Ã x : Ó ∑ 2 * x)Æ),
+    ("ZE1.2", Ò{1, 2, 3} ç  {1, 2, 3, 4}Æ), ("ZE1.3", ÒÓ ç  ˙Æ),
+    ("ZE1.4", Ò"a" ç {"a", "b"}Æ), ("ZE1.5", Ò≥ 2 ç {3, 4}Æ),
+    ("ZE1.6", Òx ç {1, 2} ¥ x ç {1, 2, 3}Æ),
+    ("ZE1.7", Òx * x ç {y : ˙ | ∂ z : ˙ ∑ y = z * z}Æ),
+    ("ZE1.8", Ò(x, y, z) = (v, w, x) ¥ (y, z) = (w, v)Æ),
+    ("ZE1.9",
+     Ò(x ¶ a, y ¶ b) = (x ¶ v, y ¶ w) ¥ (v ¶ a, w ¶ w) = (v ¶ v, w ¶ b)Æ),
+    ("ZE1.10", Òµ File; File' ∑  File =  File' ¥ age = age'Æ),
+    ("ZE1.11", Òµ File ∑ ( File').age = age'Æ),
+    ("ZE1.12",
+     Òµ File; File'
+       ∑ ( File).age = age' ± ( File).people = people' ¥  File =  File'Æ)]:
+   (string * TERM) list
+val ZE2 =
+   [("ZE2.1", Òµ a : É ∏ É ∑ (a.1, a.2) = aÆ),
+    ("ZE2.2",
+     Ò[X,
+     Y](µ p :  (X ∏ Y) ∑ {x : X; y : Y | (x, y) ç p} = {z : X ∏ Y | z ç p})Æ),
+    ("ZE2.3", Ò[x : ˙ | x > 0] = {x : ˙ | x > 0 ∑ (x ¶ x)}Æ)]:
+   (string * TERM) list
+val ZE3 =
+   [("ZE3.1", Ò(Ã x : ˙ ∑ x + 1) 3 = 4Æ), ("ZE3.2", Ò{(1, 2), (3, 4)} 3 = 4Æ),
+    ("ZE3.3", Ò(1, ~ 2) ç (abs _) ¥ abs 1 = ~ 2Æ),
+    ("ZE3.4", Òµ i, j : ˙ ∑ (i, j) ç (abs _) ¥ abs i = jÆ),
+    ("ZE3.5", Òµ i : ˙ ∑ abs i ç ÓÆ),
+    ("ZE3.6", Ò(Õ x : ˙ | x = 3 ∑ x * x) = 9Æ),
+    ("ZE3.7", Ò25 ç {y : ˙ ∑ y * y}Æ),
+    ("ZE3.8", Òa ∏ b ∏ c = d ∏ e ∏ f ¥ a ∏ b = d ∏ e ≤ c ° f = öÆ),
+    ("ZE3.9",
+     Ò[X,
+     Y](µ p :  (X ∏ Y) ∑ (µ x : X; y : Y ∑ (x, y) ç p) § (µ z : X ∏ Y ∑ z ç p))Æ),
+    ("ZE3.10", Ò[File | people = {}] = {File | people = {}}Æ),
+    ("ZE3.11", Òßa, b¢ = ßc, d¢ ¥ a = c ± b = dÆ),
+    ("ZE3.12", Òßa, b¢ = ßd, e¢ ¥ ßb, d¢ = ße, a¢Æ)]: (string * TERM) list
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val SCPM2 =
+   [("*2.02", Ò(Qac ¥ Pab ¥ Qac)Æ),
+    ("*2.03", Ò((Pab ¥ ≥ Qac) ¥ Qac ¥ ≥ Pab)Æ),
+    ("*2.15", Ò((≥ Pab ¥ Qac) ¥ ≥ Qac ¥ Pab)Æ),
+    ("*2.16", Ò((Pab ¥ Qac) ¥ ≥ Qac ¥ ≥ Pab)Æ),
+    ("*2.17", Ò((≥ Qac ¥ ≥ Pab) ¥ Pab ¥ Qac)Æ),
+    ("*2.04", Ò((Pab ¥ Qac ¥ Rbc) ¥ Qac ¥ Pab ¥ Rbc)Æ),
+    ("*2.05", Ò((Qac ¥ Rbc) ¥ (Pab ¥ Qac) ¥ Pab ¥ Rbc)Æ),
+    ("*2.06", Ò((Pab ¥ Qac) ¥ (Qac ¥ Rbc) ¥ Pab ¥ Rbc)Æ),
+    ("*2.08", Ò(Pab ¥ Pab)Æ), ("*2.21", Ò(≥ Pab ¥ Pab ¥ Qac)Æ)]:
+   (string * TERM) list
+val SCPM3 =
+   [("*3.01", Ò(Pab ± Qac § ≥ (≥ Pab ≤ ≥ Qac))Æ),
+    ("*3.2", Ò(Pab ¥ Qac ¥ Pab ± Qac)Æ),
+    ("*3.26", Ò(Pab ± Qac ¥ Pab)Æ), ("*3.27", Ò(Pab ± Qac ¥ Qac)Æ),
+    ("*3.3", Ò((Pab ± Qac ¥ Rbc) ¥ Pab ¥ Qac ¥ Rbc)Æ),
+    ("*3.31", Ò((Pab ¥ Qac ¥ Rbc) ¥ Pab ± Qac ¥ Rbc)Æ),
+    ("*3.35", Ò(Pab ± (Pab ¥ Qac) ¥ Qac)Æ),
+    ("*3.43", Ò((Pab ¥ Qac) ± (Pab ¥ Rbc) ¥ Pab ¥ Qac ± Rbc)Æ),
+    ("*3.45", Ò((Pab ¥ Qac) ¥ Pab ± Rbc ¥ Qac ± Rbc)Æ),
+    ("*3.47", Ò((Pab ¥ Rbc) ± (Qac ¥ Sabc) ¥ Pab ± Qac ¥ Rbc ± Sabc)Æ)]:
+   (string * TERM) list
+val SCPM4 =
+   [("*4.1", ÒPab ¥ Qac § (≥ Qac ¥ ≥ Pab)Æ),
+    ("*4.11", Ò(Pab § Qac) § (≥ Pab § ≥ Qac)Æ),
+    ("*4.13", Ò(Pab § ≥ (≥ Pab))Æ), ("*4.2", Ò(Pab § Pab)Æ),
+    ("*4.21", Ò(Pab § Qac) § (Qac § Pab)Æ),
+    ("*4.22", Ò((Pab § Qac) ± (Qac § Rbc) ¥ (Pab § Rbc))Æ),
+    ("*4.24", Ò(Pab § Pab ± Pab)Æ), ("*4.25", Ò(Pab § Pab ≤ Pab)Æ),
+    ("*4.3", Ò(Pab ± Qac § Qac ± Pab)Æ),
+    ("*4.31", Ò(Pab ≤ Qac § Qac ≤ Pab)Æ),
+    ("*4.33", Ò((Pab ± Qac) ± Rbc § Pab ± Qac ± Rbc)Æ),
+    ("*4.4", Ò(Pab ± (Qac ≤ Rbc) § Pab ± Qac ≤ Pab ± Rbc)Æ),
+    ("*4.41", Ò(Pab ≤ Qac ± Rbc § (Pab ≤ Qac) ± (Pab ≤ Rbc))Æ),
+    ("*4.71", Ò(Pab ¥ Qac § Pab § Pab ± Qac)Æ),
+    ("*4.73", Ò(Qac ¥ (Pab § Pab ± Qac))Æ)]: (string * TERM) list
+val SCPM5 =
+   [("*5.1", Ò(Pab ± Qac ¥ (Pab § Qac))Æ),
+    ("*5.32", Ò((Pab ¥ (Qac § Rbc)) ¥ (Pab ± Qac § Pab ± Rbc))Æ),
+    ("*5.6", Ò((Pab ± ≥ Qac ¥ Rbc) ¥ Pab ¥ Qac ≤ Rbc)Æ)]:
+   (string * TERM) list
+val it = (): unit
+val SCPM9 =
+   [("*9.01", Ò(≥ (µ Qac ∑ Sabc) § (∂ Qac ∑ ≥ Sabc))Æ),
+    ("*9.02", Ò(≥ (∂ Qac ∑ Sabc) § (µ Qac ∑ ≥ Sabc))Æ)]:
+   (string * TERM) list
+val SCPM10 =
+   [("*10.01", Ò((∂ Qac ∑ Sabc) § ≥ (µ Qac ∑ ≥ Sabc))Æ),
+    ("*10.21", Ò((µ Qac ∑ Tde ¥ Sabc) § Tde ¥ (µ Qac ∑ Sabc))Æ),
+    ("*10.22", Ò((µ Rbc ∑ Sabc ± Rbc) § (µ Rbc ∑ Sabc) ± (µ Rbc ∑ Rbc))Æ)]:
+   (string * TERM) list
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val Z1 =
+   [("Z1.1", Òa ¿ a = a ¿ {} ± a ¿ {} = a ° a ± a ° a = a \ {} ± a \ {} = aÆ),
+    ("Z1.2", Òa ° {} = a \ a ± a \ a = {} \ a ± {} \ a = {}Æ),
+    ("Z1.3", Òa ¿ b = b ¿ aÆ), ("Z1.4", Òa ° b = b ° aÆ),
+    ("Z1.5", Òa ¿ (b ¿ c) = a ¿ b ¿ cÆ), ("Z1.6", Òa ° (b ° c) = a ° b ° cÆ),
+    ("Z1.7", Òa ¿ b ° c = (a ¿ b) ° (a ¿ c)Æ),
+    ("Z1.8", Òa ° (b ¿ c) = a ° b ¿ a ° cÆ), ("Z1.9", Òa ° b ¿ (a \ b) = aÆ),
+    ("Z1.10", Ò(a \ b) ° b = {}Æ), ("Z1.11", Òa \ (b \ c) = a \ b ¿ a ° cÆ),
+    ("Z1.12", Òa \ b \ c = a \ (b ¿ c)Æ),
+    ("Z1.13", Òa ¿ (b \ c) = a ¿ b \ (c \ a)Æ),
+    ("Z1.14", Òa ° (b \ c) = a ° b \ cÆ),
+    ("Z1.15", Òa ¿ b \ c = a \ c ¿ (b \ c)Æ)]: (string * TERM) list
+val Z2 =
+   [("Z2.1", Òa \ b ° c = a \ b ¿ (a \ c)Æ), ("Z2.2", Ò≥ x ç {}Æ),
+    ("Z2.3", Òa Ä aÆ), ("Z2.4", Ò≥ a † aÆ), ("Z2.5", Ò{} Ä aÆ),
+    ("Z2.6", Òﬁ {} = {}Æ), ("Z2.7", Ò• {} = ÉÆ)]: (string * TERM) list
+val Z3 =
+   [("Z3.1", Òa Ä b § a ç  bÆ), ("Z3.2", Òa Ä b ± b Ä a § a = bÆ),
+    ("Z3.3", Ò≥ (a † b ± b † a)Æ), ("Z3.4", Òa Ä b ± b Ä c ¥ a Ä cÆ),
+    ("Z3.5", Òa † b ± b † c ¥ a † cÆ), ("Z3.6", Ò{} † a § ≥ a = {}Æ),
+    ("Z3.7", Òﬁ (a ¿ b) = ﬁ a ¿ ﬁ bÆ), ("Z3.8", Ò• (a ¿ b) = • a ° • bÆ),
+    ("Z3.9", Òa Ä b ¥ ﬁ a Ä ﬁ bÆ), ("Z3.10", Òa Ä b ¥ • b Ä • aÆ)]:
+   (string * TERM) list
+val Z3b =
+   [("Z3b.1", Òa Ä b ± b Ä a § a = bÆ), ("Z3b.2", Òa † b ± b † c ¥ a † cÆ),
+    ("Z3b.3", Ò{} † a § ≥ a = {}Æ)]: (string * TERM) list
+val Z4 =
+   [("Z4.1",
+     Ò[X, Y](R ç X ™ Y ¥ (µ x : X ∑ x ç dom R § (∂ y : Y ∑ (x, y) ç R)))Æ),
+    ("Z4.2",
+     Ò[X, Y](R ç X ™ Y ¥ (µ y : Y ∑ y ç ran R § (∂ x : X ∑ (x, y) ç R)))Æ),
+    ("Z4.3", Òdom {x1 Ì y1, x2 Ì y2} = {x1, x2}Æ),
+    ("Z4.4", Òran {x1 Ì y1, x2 Ì y2} = {y1, y2}Æ),
+    ("Z4.5", Òdom (Q ¿ R) = dom Q ¿ dom RÆ),
+    ("Z4.6", Òran (Q ¿ R) = ran Q ¿ ran RÆ),
+    ("Z4.7", Òdom (Q ° R) Ä dom Q ° dom RÆ),
+    ("Z4.8", Òran (Q ° R) Ä ran Q ° ran RÆ), ("Z4.9", Òdom {} = {}Æ),
+    ("Z4.10", Òran {} = {}Æ)]: (string * TERM) list
+val Z5 =
+   [("Z5.1",
+     Ò[X,
+     Y,
+     Z](P ç X ™ Y ± Q ç Y ™ Z
+       ¥ (x Ì z ç P ª Q § (∂ y : Y ∑ (x, y) ç P ± (y, z) ç Q)))Æ),
+    ("Z5.2", ÒP ª (Q ª R) = P ª Q ª RÆ)]: (string * TERM) list
+val Z5b =
+   [("Z5b.1", Ò[X](x Ì x' ç id X § x = x' ± x' ç X)Æ),
+    ("Z5b.2", Òid X ª P = X Ú PÆ), ("Z5b.3", ÒP ª id Y = P í YÆ),
+    ("Z5b.4", Òid V ª id W = id (V ° W)Æ)]: (string * TERM) list
+val Z5c =
+   [("Z5c.1",
+     Ò[X, Y, Z](µ x : É; g : É ∑ g ç X ﬂ Y ± x ç dom g ¥ (x, g x) ç g)Æ),
+    ("Z5c.2",
+     Ò[X,
+     Y,
+     Z](x ç dom g ± g x ç dom f ± g ç X ﬂ Y ± f ç Y ﬂ Z ¥ (f Ö g) x = f (g x))Æ)]:
+   (string * TERM) list
+val Z6 =
+   [("Z6.1", Òdom (S Ú R) = S ° dom RÆ), ("Z6.2", Òran (R í T) = ran R ° TÆ),
+    ("Z6.3", ÒS Ú R Ä RÆ), ("Z6.4", ÒR í T Ä RÆ),
+    ("Z6.5", ÒS Ú R í T = S Ú (R í T)Æ), ("Z6.6", ÒS Ú V Ú R = (S ° V) Ú RÆ),
+    ("Z6.7", ÒR í T í W = R í (T ° W)Æ)]: (string * TERM) list
+val Z6b =
+   [("Z6b.1", Òran R Ä Y ¥ S Ú R = id S ª R ± id S ª R = (S ∏ Y) ° RÆ),
+    ("Z6b.2", Òdom R Ä X ¥ R í T = R ª id T ± R ª id T = R ° (X ∏ T)Æ)]:
+   (string * TERM) list
+val Z7 =
+   [("Z7.1", Òdom R Ä X ¥ S · R = (X \ S) Ú RÆ),
+    ("Z7.2", Òran R Ä Y ¥ R Å T = R í (Y \ T)Æ), ("Z7.3", ÒS Ú R ¿ S · R = RÆ),
+    ("Z7.4", ÒR í T ¿ R Å T = RÆ)]: (string * TERM) list
+val Z8 =
+   [("Z8.2", Ò(R Á~Í) Á~Í = RÆ), ("Z8.3", Ò(Q ª R) Á~Í = R Á~Í ª Q Á~ÍÆ),
+    ("Z8.4", Òdom (R Á~Í) = ran RÆ), ("Z8.5", Òran (R Á~Í) = dom RÆ)]:
+   (string * TERM) list
+val Z8b =
+   [("Z8b.1", Ò(id V) Á~Í = id VÆ), ("Z8b.2", Òid dom R Ä R ª R Á~ÍÆ),
+    ("Z8b.3", Òid ran R Ä R Á~Í ª RÆ)]: (string * TERM) list
+val Z9 =
+   [("Z9.1", ÒS Ä X ¥ (y ç R ® S © § (∂ x : X ∑ x ç S ± (x, y) ç R))Æ),
+    ("Z9.2", ÒR ® S © = ran (S Ú R)Æ),
+    ("Z9.3", Òdom (Q ª R) = (Q Á~Í) ® dom R ©Æ),
+    ("Z9.4", Òran (Q ª R) = R ® ran Q ©Æ),
+    ("Z9.5", ÒR ® S ¿ T © = R ® S © ¿ R ® T ©Æ),
+    ("Z9.6", ÒR ® S ° T © Ä R ® S © ° R ® T ©Æ),
+    ("Z9.7", ÒR ® dom R © = ran RÆ)]: (string * TERM) list
+val Z9b = [("Z9b.1", Òdom R = first ® R ©Æ), ("Z9b.2", Òran R = second ® R ©Æ)]:
+   (string * TERM) list
+val Z10 =
+   [("Z10.1", ÒR ´ R = RÆ), ("Z10.2", ÒP ´ (Q ´ R) = P ´ Q ´ RÆ),
+    ("Z10.3", Òö ´ R = R ´ ö ± R ´ ö = RÆ),
+    ("Z10.4", Òdom Q ° dom R = ö ¥ Q ´ R = Q ¿ RÆ),
+    ("Z10.5", ÒV Ú (Q ´ R) = V Ú Q ´ V Ú RÆ),
+    ("Z10.6", Ò(Q ´ R) í W Ä Q í W ´ R í WÆ)]: (string * TERM) list
+val Z10b =
+   [("Z10b.1", Òdom (Q ´ R) = dom Q ¿ dom RÆ),
+    ("Z10b.2", Òf ç X ﬂ Y ± g ç X ﬂ Y ¥ x ç dom f \ dom g ¥ (f ´ g) x = f xÆ),
+    ("Z10b.3", Òg ç X ﬂ Y ± x ç dom g ¥ (f ´ g) x = g xÆ)]: (string * TERM) list
+val Z11 =
+   [("Z11.1", ÒR Ä R Á+ÍÆ), ("Z11.2", Òid X Ä R Á*ÍÆ), ("Z11.3", ÒR Ä R Á*ÍÆ)]:
+   (string * TERM) list
+val Z11b =
+   [("Z11b.1", ÒR Á+Í ª R Á+Í Ä R Á+ÍÆ), ("Z11b.2", Ò(R Á+Í) Á+Í = R Á+ÍÆ),
+    ("Z11b.3", Ò(R Á*Í) Á*Í = R Á*ÍÆ),
+    ("Z11b.4", ÒR Ä Q ± Q ª Q Ä Q ¥ R Á+Í Ä QÆ),
+    ("Z11b.5", ÒR Á*Í ª R Á*Í = R Á*ÍÆ),
+    ("Z11b.6", Òid X Ä Q ± R Ä Q ± Q ª Q Ä Q ¥ R Á*Í Ä QÆ),
+    ("Z11b.7", ÒR Á*Í = R Á+Í ¿ id X ± R Á+Í ¿ id X = (R ¿ id X) Á+ÍÆ),
+    ("Z11b.8", ÒR Á+Í = R ª R Á*Í ± R ª R Á*Í = R Á*Í ª RÆ),
+    ("Z11b.9", ÒS Ä (R Á*Í) ® S ©Æ),
+    ("Z11b.10", ÒS Ä T ± R ® T © Ä T ¥ (R Á*Í) ® S © Ä TÆ),
+    ("Z11b.11", ÒR ® (R Á*Í) ® S © © Ä (R Á*Í) ® S ©Æ)]: (string * TERM) list
+val Z12 =
+   [("Z12.1", Òf ç X ﬂ Y ± (x, y) ç f ¥ f x = yÆ),
+    ("Z12.2", Òf ç X ˛ Y ± (x, y) ç f ¥ f x = yÆ),
+    ("Z12.3", Òf ç X ‡ Y ± (x, y) ç f ¥ f x = yÆ),
+    ("Z12.4", Òf ç X ˛ Y ± (x, y) ç f ¥ f x = yÆ),
+    ("Z12.5", Òf ç X è Y ± (x, y) ç f ¥ f x = yÆ),
+    ("Z12.6", Òf ç X œ Y ± (x, y) ç f ¥ f x = yÆ)]: (string * TERM) list
+val Z12a =
+   [("Z12a.1",
+     Òf ç (X ﬂ Y) ¿ (X ˛ Y) ¿ (X ‡ Y) ¿ (X ˛ Y) ¿ (X è Y) ¿ (X œ Y) ± (x, y) ç f
+       ¥ f x = yÆ)]: (string * TERM) list
+val Z12b =
+   [("Z12b.1", Òf ç X ™ Y ¥ (f ç X ﬂ Y § f Ö f Á~Í = id ran f)Æ),
+    ("Z12b.2", Òf ç X ˛ Y § f ç X ﬂ Y ± f Á~Í ç Y ﬂ XÆ),
+    ("Z12b.3", Òf ç X ˛ Y § f ç X ﬂ Y ± f Á~Í ç Y ﬂ XÆ),
+    ("Z12b.4", Òf ç X ‡ Y § f ç X ≠ Y ± f Á~Í ç Y ﬂ XÆ),
+    ("Z12b.5", Òf ç X ˛ Y ¥ f ® S ° T © = f ® S © ° f ® T ©Æ),
+    ("Z12b.6", Òf ç X è Y § f ç X ≠ Y ± f Á~Í ç Y ≠ XÆ),
+    ("Z12b.7", Òf ç X œ Y ¥ f Ö f Á~Í = id YÆ)]: (string * TERM) list
+val ZNum =
+   [("ZNum.2", Òµ x, y : ˙ ∑ x º y ¥ 0 .. x Ä 0 .. yÆ),
+    ("ZNum.3", Òµ x, y : ˙ ∑ ≥ x º y ¥ 0 .. y Ä 0 .. x - 1Æ)]:
+   (string * TERM) list
++++ Compiled usr011X.sml: OK (Compilation Run Complete) +++
+val it = (): unit
+touch usr011.zexercises
+docsml wrk050
+zed -d example_zed -f wrk051_delete_theories_wrk050.sml -f wrk050.sml
+val it = (): unit
+val it = (): unit
+=== ProofPower 3.1w8 [HOL/Z Database]
+=== Copyright (C) Lemma 1 Ltd. 2000-2018
+Database name: /home/debian/pp/tmp_build/example_zed
+:) val it = (): unit
++++ Compiled wrk051_delete_theories_wrk050.sml: OK +++
+val it = false: bool
+val it = true: bool
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò(pre OPERATION) § classified_data ç Ó ﬂ DATA ± 0 º clear?Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò(∂ classified_data' : É
+             ∑ (classified_data ç Ó ﬂ DATA
+               ± classified_data' ç Ó ﬂ DATA)
+               ± 0 º clear?)
+           § classified_data ç Ó ﬂ DATA ± 0 º clear?Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  2 *)Òclassified_data ç Ó ﬂ DATAÆ
+(*  1 *)Ò0 º clear?Æ
+
+(* ?Ù *)Ò∂ classified_data' : É ∑ classified_data' ç Ó ﬂ DATAÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val it = Ù (pre OPERATION) § classified_data ç Ó ﬂ DATA ± 0 º clear?: THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò(pre READ)
+           § classified_data ç Ó ﬂ DATA
+             ± 0 º clear?
+             ± 0 º class?
+             ± class? ç dom classified_data
+             ± class? º clear?Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  5 *)Òclassified_data ç Ó ﬂ DATAÆ
+(*  4 *)Ò0 º clear?Æ
+(*  3 *)Ò0 º class?Æ
+(*  2 *)Òclass? ç dom classified_dataÆ
+(*  1 *)Òclass? º clear?Æ
+
+(* ?Ù *)Ò∂ classified_data' : É; data! : É
+           ∑ (classified_data' ç Ó ﬂ DATA
+             ± data! ç DATA)
+             ± data! = classified_data class?
+             ± classified_data' = classified_dataÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val it =
+   Ù (pre READ)
+       § classified_data ç Ó ﬂ DATA
+         ± 0 º clear?
+         ± 0 º class?
+         ± class? ç dom classified_data
+         ± class? º clear?: THM
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò((pre READ) ¥ (pre BADREAD)) ± ((pre READ) ± BADREAD ¥ READ)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Ò((∂ classified_data' : É; data! : É
+               ∑ (((classified_data ç Ó ﬂ DATA
+                 ± classified_data' ç Ó ﬂ DATA)
+                 ± 0 º clear?)
+                 ± 0 º class?
+                 ± data! ç DATA)
+                 ± class? ç dom classified_data
+                 ± class? º clear?
+                 ± data! = classified_data class?
+                 ± classified_data' = classified_data)
+             ¥ (∂ classified_data' : É; data! : É
+               ∑ (((classified_data ç Ó ﬂ DATA
+                 ± classified_data' ç Ó ﬂ DATA)
+                 ± 0 º clear?)
+                 ± 0 º class?
+                 ± data! ç DATA)
+                 ± ((((classified_data ç Ó ﬂ DATA
+                     ± classified_data' ç Ó ﬂ DATA)
+                     ± 0 º clear?)
+                     ± 0 º class?
+                     ± data! ç DATA)
+                     ± class? ç dom classified_data
+                     ± class? º clear?
+                     ± data! = classified_data class?
+                     ± classified_data' = classified_data
+                   ≤ clear? < class?
+                     ± data! = classified_data class?
+                     ± classified_data' = classified_data)))
+           ± ((∂ classified_data' : É; data! : É
+                 ∑ (((classified_data ç Ó ﬂ DATA
+                   ± classified_data' ç Ó ﬂ DATA)
+                   ± 0 º clear?)
+                   ± 0 º class?
+                   ± data! ç DATA)
+                   ± class? ç dom classified_data
+                   ± class? º clear?
+                   ± data! = classified_data class?
+                   ± classified_data' = classified_data)
+               ± (((classified_data ç Ó ﬂ DATA
+               ± classified_data' ç Ó ﬂ DATA)
+               ± 0 º clear?)
+               ± 0 º class?
+               ± data! ç DATA)
+               ± ((((classified_data ç Ó ﬂ DATA
+                   ± classified_data' ç Ó ﬂ DATA)
+                   ± 0 º clear?)
+                   ± 0 º class?
+                   ± data! ç DATA)
+                   ± class? ç dom classified_data
+                   ± class? º clear?
+                   ± data! = classified_data class?
+                   ± classified_data' = classified_data
+                 ≤ clear? < class?
+                   ± data! = classified_data class?
+                   ± classified_data' = classified_data)
+             ¥ (((classified_data ç Ó ﬂ DATA
+               ± classified_data' ç Ó ﬂ DATA)
+               ± 0 º clear?)
+               ± 0 º class?
+               ± data! ç DATA)
+               ± class? ç dom classified_data
+               ± class? º clear?
+               ± data! = classified_data class?
+               ± classified_data' = classified_data)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  9 *)Òclassified_data ç Ó ﬂ DATAÆ
+(*  8 *)Òclassified_data' ç Ó ﬂ DATAÆ
+(*  7 *)Ò0 º clear?Æ
+(*  6 *)Ò0 º class?Æ
+(*  5 *)Òdata! ç DATAÆ
+(*  4 *)Òclass? ç dom classified_dataÆ
+(*  3 *)Òclass? º clear?Æ
+(*  2 *)Òdata! = classified_data class?Æ
+(*  1 *)Òclassified_data' = classified_dataÆ
+
+(* ?Ù *)Ò∂ classified_data'' : É; data!' : É
+           ∑ (classified_data'' ç Ó ﬂ DATA
+             ± data!' ç DATA)
+             ± ((classified_data'' ç Ó ﬂ DATA
+                 ± data!' ç DATA)
+                 ± data!' = classified_data class?
+                 ± classified_data'' = classified_data
+               ≤ clear? < class?
+                 ± data!' = classified_data class?
+                 ± classified_data'' = classified_data)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  9 *)Òclassified_data ç Ó ﬂ DATAÆ
+(*  8 *)Òclassified_data' ç Ó ﬂ DATAÆ
+(*  7 *)Ò0 º clear?Æ
+(*  6 *)Ò0 º class?Æ
+(*  5 *)Òdata! ç DATAÆ
+(*  4 *)Òclass? ç dom classified_dataÆ
+(*  3 *)Òclass? º clear?Æ
+(*  2 *)Òdata! = classified_data class?Æ
+(*  1 *)Òclassified_data' = classified_dataÆ
+
+(* ?Ù *)Òclassified_data class? ç DATA
+           ± (classified_data class? ç DATA ≤ clear? < class?)Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val it = Ù ((pre READ) ¥ (pre BADREAD)) ± ((pre READ) ± BADREAD ¥ READ): THM
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val it = (): unit
+val secure_kernel_sim =
+   Ù µ kernel : É
+       ∑ kernel ç secure_kernel
+         § kernel ç KERNEL
+           ± (µ appl : APPLICATION ∑ construction (appl, kernel) ç secure): THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ kernel : KERNEL; appl : APPLICATION
+           ∑ kernel ç secure_kernel ¥ construction (appl, kernel) ç secureÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ kernel : KERNEL; appl : APPLICATION
+           ∑ kernel ç KERNEL
+               ± (µ appl : APPLICATION ∑ construction (appl, kernel) ç secure)
+             ¥ construction (appl, kernel) ç secureÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òkernel ç KERNELÆ
+(*  2 *)Òappl ç APPLICATIONÆ
+(*  1 *)Òµ appl : APPLICATION ∑ construction (appl, kernel) ç secureÆ
+
+(* ?Ù *)Òconstruction (appl, kernel) ç secureÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val it =
+   Ù µ kernel : KERNEL; appl : APPLICATION
+       ∑ kernel ç secure_kernel ¥ construction (appl, kernel) ç secure: THM
+val it = (): unit
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ x, y : ˙ ∑ x º y ¥ 0 .. x Ä 0 .. yÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òx º yÆ
+(*  2 *)Ò0 º x1Æ
+(*  1 *)Òx1 º xÆ
+
+(* ?Ù *)Òx1 º yÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val le_dots_lemma1 = Ù µ x, y : ˙ ∑ x º y ¥ 0 .. x Ä 0 .. y: THM
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òµ x, y : ˙ ∑ ≥ x º y ¥ 0 .. y Ä 0 .. x - 1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òy < xÆ
+(*  2 *)Ò0 º x1Æ
+(*  1 *)Òx1 º yÆ
+
+(* ?Ù *)Òx1 º x + ~ 1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  4 *)Òy < xÆ
+(*  3 *)Ò0 º x1Æ
+(*  2 *)Òx1 º yÆ
+(*  1 *)Òx1 < xÆ
+
+(* ?Ù *)Òx1 º x + ~ 1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òy < xÆ
+(*  2 *)Ò0 º x1Æ
+(*  1 *)Òx1 º yÆ
+
+(* ?Ù *)Òx1 + 1 º x ¥ x1 º x + ~ 1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "" *** *)
+
+(*  3 *)Òy < xÆ
+(*  2 *)Ò0 º x1Æ
+(*  1 *)Òx1 º yÆ
+
+(* ?Ù *)Òx1 + 1 + ~ x º 0 ¥ x1 + ~ (x + ~ 1) º 0Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val le_dots_lemma2 = Ù µ x, y : ˙ ∑ ≥ x º y ¥ 0 .. y Ä 0 .. x - 1: THM
+val ∏_fc_thm =
+   Ù µ v : É; w : É; V : É; W : É ∑ v ç V ± w ç W ¥ (v, w) ç V ∏ W: THM
+val it = (): unit
+val it = (): unit
+Now 1 goal on the main goal stack
+
+(* *** Goal "" *** *)
+
+(* ?Ù *)Òkernel_implementation ç secure_kernelÆ
+
+val it = (): unit
+val specs =
+   [Ù µ kernel : É
+        ∑ kernel ç secure_kernel
+          § kernel ç KERNEL
+            ± (µ appl : APPLICATION ∑ construction (appl, kernel) ç secure),
+    Ù µ sys : É
+        ∑ sys ç secure § sys ç SYSTEM ± sys ç state_secure ± sys ç out_secure,
+    Ù µ sys : É
+        ∑ sys ç state_secure
+          § sys ç SYSTEM
+            ± (µ class, clear : Ó; inp : IN; s, s' : STATE2
+              | (0 .. class) Ú s = (0 .. class) Ú s'
+              ∑ (0 .. class) Ú first (sys (clear, inp, s))
+                = (0 .. class) Ú first (sys (clear, inp, s'))),
+    Ù µ sys : É
+        ∑ sys ç out_secure
+          § sys ç SYSTEM
+            ± (µ clear : Ó; inp : IN; s, s' : STATE2
+              | (0 .. clear) Ú s = (0 .. clear) Ú s'
+              ∑ second (sys (clear, inp, s)) = second (sys (clear, inp, s')))]:
+   THM list
+Tactic produced 6 subgoals:
+
+(* *** Goal "6" *** *)
+
+(*  6 *)Òappl ç APPLICATIONÆ
+(*  5 *)Òclear ç ÓÆ
+(*  4 *)Òinp ç INÆ
+(*  3 *)Òs ç STATE2Æ
+(*  2 *)Òs' ç STATE2Æ
+(*  1 *)Ò(0 .. clear) Ú s = (0 .. clear) Ú s'Æ
+
+(* ?Ù *)Ò(construction (appl, kernel_implementation) (clear, inp, s)).2
+           = (construction (appl, kernel_implementation) (clear, inp, s')).2Æ
+
+
+(* *** Goal "5" *** *)
+
+(*  1 *)Òappl ç APPLICATIONÆ
+
+(* ?Ù *)Òconstruction (appl, kernel_implementation) ç SYSTEMÆ
+
+
+(* *** Goal "4" *** *)
+
+(*  7 *)Òappl ç APPLICATIONÆ
+(*  6 *)Òclass ç ÓÆ
+(*  5 *)Òclear ç ÓÆ
+(*  4 *)Òinp ç INÆ
+(*  3 *)Òs ç STATE2Æ
+(*  2 *)Òs' ç STATE2Æ
+(*  1 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (construction (appl, kernel_implementation) (clear, inp, s)).1
+           = (0 .. class)
+               Ú (construction (appl, kernel_implementation) (clear, inp, s')).1Æ
+
+
+(* *** Goal "3" *** *)
+
+(*  1 *)Òappl ç APPLICATIONÆ
+
+(* ?Ù *)Òconstruction (appl, kernel_implementation) ç SYSTEMÆ
+
+
+(* *** Goal "2" *** *)
+
+(*  1 *)Òappl ç APPLICATIONÆ
+
+(* ?Ù *)Òconstruction (appl, kernel_implementation) ç SYSTEMÆ
+
+
+(* *** Goal "1" *** *)
+
+(* ?Ù *)Òkernel_implementation ç KERNELÆ
+
+The subgoal 2 duplicates goals labelled 3, 5
+The subgoal 3 duplicates goals labelled 2, 5
+val it = (): unit
+val condec = Ù construction ç APPLICATION ∏ KERNEL ≠ SYSTEM: THM
+val conpred =
+   Ù µ appl : APPLICATION; kernel : KERNEL
+       ∑ construction (appl, kernel) = kernel appl: THM
+val kidec = Ù kernel_implementation ç KERNEL: THM
+val kipred =
+   Ù µ clear : Ó; inp : IN; state : STATE2; appl : APPLICATION
+       ∑ kernel_implementation appl (clear, inp, state)
+         = (state ´ (0 .. clear - 1) · first (appl (inp, (0 .. clear) Ú state)),
+           second (appl (inp, (0 .. clear) Ú state))): THM
+Tactic produced 0 subgoals:
+Current goal achieved, next goal is:
+
+(* *** Goal "2" *** *)
+
+(*  1 *)Òappl ç APPLICATIONÆ
+
+(* ?Ù *)Òconstruction (appl, kernel_implementation) ç SYSTEMÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "2" *** *)
+
+(*  3 *)Òappl ç APPLICATIONÆ
+(*  2 *)Òkernel_implementation ç KERNELÆ
+(*  1 *)Òconstruction ç APPLICATION ∏ KERNEL ≠ SYSTEMÆ
+
+(* ?Ù *)Òconstruction (appl, kernel_implementation) ç SYSTEMÆ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "2" *** *)
+
+(*  4 *)Òappl ç APPLICATIONÆ
+(*  3 *)Òkernel_implementation ç KERNELÆ
+(*  2 *)Òconstruction ç APPLICATION ∏ KERNEL ≠ SYSTEMÆ
+(*  1 *)Ò(appl, kernel_implementation) ç APPLICATION ∏ KERNELÆ
+
+(* ?Ù *)Òconstruction (appl, kernel_implementation) ç SYSTEMÆ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current goal achieved, next goal is:
+
+(* *** Goal "4" *** *)
+
+(*  7 *)Òappl ç APPLICATIONÆ
+(*  6 *)Òclass ç ÓÆ
+(*  5 *)Òclear ç ÓÆ
+(*  4 *)Òinp ç INÆ
+(*  3 *)Òs ç STATE2Æ
+(*  2 *)Òs' ç STATE2Æ
+(*  1 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (construction (appl, kernel_implementation) (clear, inp, s)).1
+           = (0 .. class)
+               Ú (construction (appl, kernel_implementation) (clear, inp, s')).1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "4" *** *)
+
+(*  8 *)Òappl ç APPLICATIONÆ
+(*  7 *)Òclass ç ÓÆ
+(*  6 *)Òclear ç ÓÆ
+(*  5 *)Òinp ç INÆ
+(*  4 *)Òs ç STATE2Æ
+(*  3 *)Òs' ç STATE2Æ
+(*  2 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  1 *)Òkernel_implementation ç KERNELÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (construction (appl, kernel_implementation) (clear, inp, s)).1
+           = (0 .. class)
+               Ú (construction (appl, kernel_implementation) (clear, inp, s')).1Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "4" *** *)
+
+(*  8 *)Òappl ç APPLICATIONÆ
+(*  7 *)Òclass ç ÓÆ
+(*  6 *)Òclear ç ÓÆ
+(*  5 *)Òinp ç INÆ
+(*  4 *)Òs ç STATE2Æ
+(*  3 *)Òs' ç STATE2Æ
+(*  2 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  1 *)Òkernel_implementation ç KERNELÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (s ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s)).1)
+           = (0 .. class)
+               Ú (s' ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)Æ
+
+val it = (): unit
+Tactic produced 2 subgoals:
+
+(* *** Goal "4.2" *** *)
+
+(*  9 *)Òappl ç APPLICATIONÆ
+(*  8 *)Òclass ç ÓÆ
+(*  7 *)Òclear ç ÓÆ
+(*  6 *)Òinp ç INÆ
+(*  5 *)Òs ç STATE2Æ
+(*  4 *)Òs' ç STATE2Æ
+(*  3 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  2 *)Òkernel_implementation ç KERNELÆ
+(*  1 *)Ò≥ clear º classÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (s ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s)).1)
+           = (0 .. class)
+               Ú (s' ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)Æ
+
+
+(* *** Goal "4.1" *** *)
+
+(*  9 *)Òappl ç APPLICATIONÆ
+(*  8 *)Òclass ç ÓÆ
+(*  7 *)Òclear ç ÓÆ
+(*  6 *)Òinp ç INÆ
+(*  5 *)Òs ç STATE2Æ
+(*  4 *)Òs' ç STATE2Æ
+(*  3 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  2 *)Òkernel_implementation ç KERNELÆ
+(*  1 *)Òclear º classÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (s ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s)).1)
+           = (0 .. class)
+               Ú (s' ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)Æ
+
+val it = (): unit
+Tactic produced 1 subgoal:
+
+(* *** Goal "4.1" *** *)
+
+(* 10 *)Òappl ç APPLICATIONÆ
+(*  9 *)Òclass ç ÓÆ
+(*  8 *)Òclear ç ÓÆ
+(*  7 *)Òinp ç INÆ
+(*  6 *)Òs ç STATE2Æ
+(*  5 *)Òs' ç STATE2Æ
+(*  4 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  3 *)Òkernel_implementation ç KERNELÆ
+(*  2 *)Òclear º classÆ
+(*  1 *)Ò0 .. clear Ä 0 .. classÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (s ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s)).1)
+           = (0 .. class)
+               Ú (s' ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)Æ
+
+val it = (): unit
+val set_lemma_1 =
+   Ù µ A, B : É; x, x' : É ∑ A Ä B ¥ B Ú x = B Ú x' ¥ A Ú x = A Ú x': THM
+Tactic produced 1 subgoal:
+
+(* *** Goal "4.1" *** *)
+
+(* 10 *)Òappl ç APPLICATIONÆ
+(*  9 *)Òclass ç ÓÆ
+(*  8 *)Òclear ç ÓÆ
+(*  7 *)Òinp ç INÆ
+(*  6 *)Òs ç STATE2Æ
+(*  5 *)Òs' ç STATE2Æ
+(*  4 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  3 *)Òkernel_implementation ç KERNELÆ
+(*  2 *)Òclear º classÆ
+(*  1 *)Ò0 .. clear Ä 0 .. classÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (s ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)
+           = (0 .. class)
+               Ú (s' ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)Æ
+
+val it = (): unit
+val set_lemma_2 =
+   Ù µ A : É; x, x', y : É ∑ A Ú x = A Ú x' ¥ A Ú (x ´ y) = A Ú (x' ´ y): THM
+Tactic produced 0 subgoals:
+Current goal achieved, next goal is:
+
+(* *** Goal "4.2" *** *)
+
+(*  9 *)Òappl ç APPLICATIONÆ
+(*  8 *)Òclass ç ÓÆ
+(*  7 *)Òclear ç ÓÆ
+(*  6 *)Òinp ç INÆ
+(*  5 *)Òs ç STATE2Æ
+(*  4 *)Òs' ç STATE2Æ
+(*  3 *)Ò(0 .. class) Ú s = (0 .. class) Ú s'Æ
+(*  2 *)Òkernel_implementation ç KERNELÆ
+(*  1 *)Ò≥ clear º classÆ
+
+(* ?Ù *)Ò(0 .. class)
+               Ú (s ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s)).1)
+           = (0 .. class)
+               Ú (s' ´ (0 .. clear - 1) · (appl (inp, (0 .. clear) Ú s')).1)Æ
+
+val it = (): unit
+val set_lemma_3 =
+   Ù µ A, B : É; x, x' : É; st, st' : É
+       ∑ A Ú x = A Ú x' ¥ A Ä B ¥ A Ú (x ´ B · st) = A Ú (x' ´ B · st'): THM
+Tactic produced 0 subgoals:
+Current goal achieved, next goal is:
+
+(* *** Goal "6" *** *)
+
+(*  6 *)Òappl ç APPLICATIONÆ
+(*  5 *)Òclear ç ÓÆ
+(*  4 *)Òinp ç INÆ
+(*  3 *)Òs ç STATE2Æ
+(*  2 *)Òs' ç STATE2Æ
+(*  1 *)Ò(0 .. clear) Ú s = (0 .. clear) Ú s'Æ
+
+(* ?Ù *)Ò(construction (appl, kernel_implementation) (clear, inp, s)).2
+           = (construction (appl, kernel_implementation) (clear, inp, s')).2Æ
+
+val it = (): unit
+Tactic produced 0 subgoals:
+Current and main goal achieved
+val it = (): unit
+Now 0 goals on the main goal stack
+val kernel_secure_thm = Ù kernel_implementation ç secure_kernel: THM
+val it = (): unit
+val it = (): unit
+val it = (): unit
++++ Compiled wrk050.sml: OK (Compilation Run Complete) +++
+val it = (): unit
+touch wrk050.th
+All module tests passed.
+Thu May 31 22:22:52 PDT 2018
+Tidying up
+Thu May 31 22:22:52 PDT 2018
+Finished

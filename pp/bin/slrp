@@ -1,0 +1,92 @@
+#!/bin/sh
+# slrp From: imp017.doc
+# Shell script to run the SLRP Parser Generator
+if test -z "$PROGNAME"
+then
+	PROGNAME=`basename $0`
+	USAGE="$PROGNAME [-l log_level] [-g] [-h] [-b] [-q quote_con] [-n name_con] [-r] -e eos_class -f grammar_file"
+fi
+DIRNAME=`dirname "$0"`
+MLCOMPILER=POLYML
+LOGLEVEL=2
+EOS=LCEos
+INFILE=
+QUOTECON=""
+QUOTECONSUPPLIED=false
+NAMECON=""
+NAMECONSUPPLIED=false
+SLRONLY=false
+TIMINGS=false
+GENERIC=false
+SEPARATEREDUCTIONS=false
+BRIEFINTERFACE=false
+while getopts l:e:f:grbsq:tn: arg
+do
+	case $arg in
+		q)	QUOTECONSUPPLIED=true; QUOTECON=$OPTARG ;;
+		e)	EOS=$OPTARG ;;
+		f)	INFILE=$OPTARG ;;
+		g)	GENERIC=true ;;
+		r)	SEPARATEREDUCTIONS=true ;;
+		b)	BRIEFINTERFACE=true ;;		
+		n)	NAMECONSUPPLIED=true; NAMECON=$OPTARG ;;
+		l)	LOGLEVEL=$OPTARG ;;
+		s)	SLRONLY=true ;;
+		t)	TIMINGS=true
+	esac
+done
+shift `expr $OPTIND - 1`
+if	test -n "$*" -o -z "$INFILE"
+then
+	echo "$PROGNAME: usage: $USAGE"
+	exit 1
+fi
+if	test `expr "$INFILE" : ".*\\.txt\$"` -eq 0
+then
+	INFILE=$INFILE.txt
+fi
+if	test `expr "$LOGLEVEL" : "[0-9]*$"` -eq 0
+then
+	echo "$PROGNAME: usage: $USAGE"
+	echo "$PROGNAME: the -l option must be a number"	
+	exit 1
+fi
+if	[ "$QUOTECONSUPPLIED" = true -a "$QUOTECON" = "" ]
+then
+	echo "$PROGNAME: usage: $USAGE"
+	echo "$PROGNAME: if -q is supplied, the string quote_con must not be empty"	
+fi
+if	[ "$NAMECONSUPPLIED" = true -a "$NAMECON" = "" ]
+then
+	echo "$PROGNAME: usage: $USAGE"
+	echo "$PROGNAME: if -n is supplied, the string name_con must not be empty"	
+fi
+DIR=`dirname "$INFILE"`
+BASE=`basename "$INFILE" .txt`
+OUTFILE="$DIR/$BASE.sml"
+if 	[ $SEPARATEREDUCTIONS = true ]
+then	REDUCTIONSFILE="$DIR/$BASE.red.sml"
+else	REDUCTIONSFILE=""
+fi
+LOGFILE="$DIR/$BASE.log"
+if	[ "$MLCOMPILER" = SMLNJ ]
+then	eval `.arch-n-opsys`
+	RUNSLRP="eval sml \"@SMLload=$DIRNAME/slrp-bin.$HEAP_SUFFIX\""
+else	RUNSLRP="eval \"$DIRNAME/slrp-bin\""
+fi
+(
+	export \
+		SLRPINFILE="$INFILE" \
+		SLRPOUTFILE="$OUTFILE" \
+		SLRPEOS="$EOS" \
+		SLRPQUOTECON="$QUOTECON" \
+		SLRPNAMECON="$NAMECON" \
+		SLRPLOGFILE="$LOGFILE" \
+		SLRPLOGLEVEL="$LOGLEVEL" \
+		SLRPSLRONLY="$SLRONLY" \
+		SLRPTIMINGS="$TIMINGS" \
+		SLRPGENERIC="$GENERIC" \
+		SLRPREDUCTIONSFILE="$REDUCTIONSFILE" \
+		SLRPBRIEFINTERFACE="$BRIEFINTERFACE"
+	$RUNSLRP
+)

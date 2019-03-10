@@ -1,0 +1,264 @@
+#! /bin/sh
+#	pp_list   From: $Id: imp111.doc,v 1.61 2012/12/27 15:57:37 rda Exp rda $ %Z%
+#
+# Shell script to list ProofPower theories
+PROGNAME=`basename "$0"`
+USAGE="$PROGNAME [-c] -d database[#theory] [-i script] [-l lang] [-v] [-a | theory ...]"
+USAGEMSG="$PROGNAME: usage: $USAGE"
+PROGNAME=`basename "$0"`
+diag() {
+	echo $PROGNAME: $* 1>&2
+}
+if test "$PPENVDEBUG" = ""
+then
+	env_diag() {
+		true
+	}
+else
+	env_diag() {
+		diag $*
+	}
+fi
+set_pp_home() {
+	if test "$PPHOME" = ""
+	then
+		BINDIR=`dirname "$0"`
+		if test "$BINDIR" = ""
+		then
+			BINDIR="."
+		fi
+		FINDFILE="$BINDIR"/findfile
+		if test -x "$FINDFILE" && BINFILE=`"$FINDFILE" -r $0`
+		then
+			env_diag "found real path to executable $0 at $BINFILE"
+			REALBINDIR=`dirname "$BINFILE"`
+			PPHOME=`dirname "$REALBINDIR"`
+			if test -d $PPHOME
+			then
+				env_diag "using PPHOME=$PPHOME"
+				export PPHOME
+				PATH="$PPHOME"/bin:"$PATH"
+				env_diag "using PATH=$PATH"
+			else
+				env_diag cannot access $PPHOME
+				diag "cannot locate the ProofPower installation directory"
+			fi
+		else
+			env_diag "cannot find real path to executable $0"
+			diag "cannot locate the ProofPower installation directory"
+			exit 1
+		fi
+	else	env_diag "PPHOME set by caller to $PPHOME"
+		env_diag "PATH set by caller to $PATH"
+	fi
+	if test "$PPDATABASEPATH" = ""
+	then
+		PPDATABASEPATH=".:"$HOME"/db:"$PPHOME"/db"
+		export PPDATABASEPATH
+		env_diag "using PPDATABASEPATH=$PPDATABASEPATH"
+	else
+		env_diag "PPDATABASEPATH set by caller to $PPDATABASEPATH"
+	fi
+}
+
+PPINITIALIZATIONSCRIPTS=""
+DBN=""
+ALL=1
+PPLISTPRINTCACHES="no"
+PPLISTLANGUAGES=""
+verbose="no"
+while true
+do
+	case $1 in
+	-a)	ALL=0 ; shift ;;
+	-c)	PPLISTPRINTCACHES="yes" ; shift ;;
+	-d)	DBN="$2" ; shift ; shift ;;
+	-i)	PPINITIALIZATIONSCRIPTS="$PPINITIALIZATIONSCRIPTS -i $2"; shift ; shift	;;
+	-l)	languages="$languages$2," ; shift ; shift ;;
+	-v)	verbose="yes"; shift ;;
+	-*)	diag "Bad flag for $PROGNAME: $1" ;
+		diag $USAGEMSG;
+		exit 1 ;;
+	*)							  break ;;
+	esac
+done
+if test "$DBN" = ""
+then
+	diag $USAGEMSG
+	exit 1
+fi
+export PPLISTLANGUAGES
+if test $ALL -eq 0
+then
+	if test $# -ne 0
+	then
+		diag $USAGEMSG
+		exit 1
+	fi
+fi
+set_pp_home
+if test $ALL -eq 0
+then
+	PPLISTPRINTTHEORIES=""
+elif test $# -eq 0
+then PPLISTPRINTTHEORIES="just names,"
+else PPLISTPRINTTHEORIES=""
+fi
+while test $# -ne 0
+do
+	PPLISTPRINTTHEORIES=$PPLISTPRINTTHEORIES","$1 ; shift
+done
+export PPLISTPRINTTHEORIES
+export PPLISTPRINTCACHES
+exit_status=1
+TEMP_FILE=/tmp/`basename "$0"`.$$
+eval pp -d "$DBN" "$PPINITIALIZATIONSCRIPTS" > "$TEMP_FILE" << smlcommands3
+local
+open ListerSupport;
+val {print = bprint_cache, out = boutput_cache, out1 = boutput_cache1} =
+	gen_theory_lister
+	[LSBanner, LSParents, LSChildren,
+	LSADSection (fn nm => "Notes"),
+	LSADString(fn nm => ([],"This theory is a cache theory; its contents have not been listed.")),
+	LSTrailer];
+val print_cache = bprint_cache (fn nm => get_error_message 33031 [nm]);
+val output_cache1 = boutput_cache1 (fn nm => get_error_message 33031 [nm]);
+in
+val output_cache = boutput_cache (fn nm => get_error_message 33031 [nm]);
+end;
+local
+	val ordA = ord "A";
+	val ordZ = ord "Z";
+	val orda = ord "a";
+	val change = orda-ordA;
+fun lcase c = (
+	if ord c >= ordA andalso ord c <= ordZ
+	then chr (ord c + change)
+	else c
+);
+in
+val word_lcase = implode o map lcase o explode;
+end;
+
+local
+
+val languages_source = get_shell_var "PPLISTLANGUAGES";
+fun mk_languages acc [] = [implode (rev acc)]
+| mk_languages acc [","] = [implode(rev acc)]
+| mk_languages acc ("," :: x) = (implode(rev acc) :: mk_languages [] x)
+| mk_languages acc (a :: x) = mk_languages (a :: acc) x;
+in
+val languages = if languages_source = ""
+		then []
+		else mk_languages [] (explode languages_source);
+
+val language_procs = (("HOL","output_theory") ::
+	map (fn lang =>
+	(use_string(word_lcase lang ^ "_output_theory;"); (lang,word_lcase lang ^ "_output_theory"))
+	handle _ =>
+	(lang,"output_theory"))
+	(((map get_language (get_descendants "min")) cup languages) less "HOL"));
+end;
+let
+val print_caches = get_shell_var "PPLISTPRINTCACHES";
+val caches = get_cache_theories();
+
+fun output_lang_theory lang {theory = thnm, out_file = out_file} = (
+	(use_string( lassoc3 language_procs lang ^
+		"{theory = \""^thnm^"\", out_file = \""^out_file^"\"};"))
+);
+
+fun output_a_theory thnm lang = (
+	open_theory thnm
+	handle _ => open_theory (#theory pp'database_info);
+	(if print_caches = "yes" orelse not(thnm mem caches)
+	then
+		output_lang_theory lang {theory = thnm, out_file = ""}
+	else
+		output_cache {theory = thnm, out_file = ""}
+	)
+	handle complaint => (diag_line "";
+	pass_on complaint "output_theory" "pp_list")
+);
+
+val single_language = (case languages of
+	[] => Nil
+	| _ => Value(hd languages));
+
+val output_a_theory1 = (
+	case single_language of
+	Nil => (fn thnm => output_a_theory thnm (get_language thnm))
+	| Value sl => (fn thnm => output_a_theory thnm sl)
+);
+
+val output_a_theory2 = (fn thnm => output_a_theory thnm (get_language thnm));
+
+fun aux acc [] = (if is_nil acc
+		then ()
+		else (output_a_theory1 (implode(rev acc)))
+) | aux acc ("," :: rest) = ((if is_nil acc
+		then ()
+		else (output_a_theory1 (implode(rev acc))));
+			aux [] rest
+)| aux acc (a :: x) = aux (a :: acc) x;
+
+val do_theories = (Sort.sort Sort.string_order
+	(
+	if languages = []
+	then (get_descendants "min")
+	else filter (fn nm => (get_language nm) mem languages)
+	(get_descendants "min")
+	)
+);
+
+val print_theories = get_shell_var "PPLISTPRINTTHEORIES";
+in
+(diag_line "START_OF_LISTING";
+(case print_theories of
+	"" => (map output_a_theory2 do_theories; ())
+	| "just names," =>
+		(map diag_line do_theories; ())
+	| _ => aux [] (explode print_theories));
+diag_line "END_OF_LISTING")
+end ;
+quit();
+smlcommands3
+EXIT_STATUS=$?
+if test $EXIT_STATUS -ne 0
+then
+	cat "$TEMP_FILE"
+	rm -f "$TEMP_FILE"
+	diag "\"pp -d $DBN\" exited with status $EXIT_STATUS"
+	exit_status=1
+	exit 1
+fi
+if grep START_OF_LISTING "$TEMP_FILE" > /dev/null
+then if grep END_OF_LISTING "$TEMP_FILE" > /dev/null
+then
+	if test "$verbose" = "yes"
+	then
+		cat "$TEMP_FILE" >&2
+	else
+		sed -e '1,/START_OF_LISTING/ d' \
+		-e '/END_OF_LISTING/,$ d' \
+		-e '/val  *it *= *( *) *: *unit/d' < "$TEMP_FILE"
+	fi
+	rm -f "$TEMP_FILE"
+else
+	cat "$TEMP_FILE" >&2
+	echo >&2
+	diag "exited with ill-formed listing"
+	rm -f "$TEMP_FILE"
+	exit_status=1
+	exit 1
+fi
+else
+	cat "$TEMP_FILE" >&2
+	echo >&2
+	diag "exited with ill-formed listing"
+	rm -f "$TEMP_FILE"
+	exit_status=1
+	exit 1
+fi
+
+exit_status=0

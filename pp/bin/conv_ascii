@@ -1,0 +1,131 @@
+#! /bin/sh
+#	conv_ascii/conv_extended   From: $Id: imp100.doc,v 1.25 2009/09/06 13:02:41 rda Exp rda $
+
+PROGNAME=`basename "$0"`
+USAGE="$PROGNAME [-v] [-K] [-k keyword_file] <file> ..."
+USAGEMSG="$PROGNAME: usage: $USAGE"
+PROGNAME=`basename "$0"`
+diag() {
+	echo $PROGNAME: $* 1>&2
+}
+if test "$PPENVDEBUG" = ""
+then
+	env_diag() {
+		true
+	}
+else
+	env_diag() {
+		diag $*
+	}
+fi
+set_pp_home() {
+	if test "$PPHOME" = ""
+	then
+		BINDIR=`dirname "$0"`
+		if test "$BINDIR" = ""
+		then
+			BINDIR="."
+		fi
+		FINDFILE="$BINDIR"/findfile
+		if test -x "$FINDFILE" && BINFILE=`"$FINDFILE" -r "$0"`
+		then
+			env_diag "found real path to executable $0 at $BINFILE"
+			REALBINDIR=`dirname "$BINFILE"`
+			PPHOME=`dirname "$REALBINDIR"`
+			if test -d "$PPHOME"
+			then
+				env_diag "using PPHOME=$PPHOME"
+				export PPHOME
+				PATH="$PPHOME"/bin:"$PATH"
+				env_diag "using PATH=$PATH"
+			else
+				env_diag cannot access $PPHOME
+				diag "cannot locate the ProofPower installation directory"
+			fi
+		else
+			env_diag "cannot find real path to executable $0"
+			diag "cannot locate the ProofPower installation directory"
+			exit 1
+		fi
+	else	env_diag "PPHOME set by caller to $PPHOME"
+		env_diag "PATH set by caller to $PATH"
+	fi
+	if test "$PPETCPATH" = ""
+	then
+		PPETCPATH="$PPHOME"/etc:"$PATH"
+		export PPETCPATH
+		env_diag "using PPETCPATH=$PPETCPATH"
+	else
+		env_diag "PPETCPATH set by caller to $PPETCPATH"
+	fi
+}
+SIEVEFILE=""
+KEYFILE=""
+RENAME="y"
+OPT_K=""
+
+while true
+do
+	case $1 in
+	-K)		OPT_K="-K"			; shift		;;
+	-k)		KEYFILE=$KEYFILE" -k \"$2\""	; shift ; shift	;;
+	-r)		RENAME="n"			; shift 	;;
+	--)						  shift ; break ;;
+	-*)		diag "Bad flag for $PROGNAME: $1"
+			diag $USAGEMSG
+								  exit 1 ;;
+	*)							  break ;;
+	esac
+done
+
+if test $# -lt 1
+then
+	diag $USAGEMSG
+	exit 1
+fi
+
+set_pp_home
+
+EXITSTATUS=0
+
+convert(){
+	{ echo '=CONVERT_FORMAT' ; sed -e '1,$s/^/ /' $2 ; echo '=IGN' ; } |
+		eval sieve "$OPT_K" "$KEYFILE" "$1" | sed -e '1,$s/ //'
+}
+
+for FILE
+do
+	stem=`basename "$FILE" .doc`
+	dname=`dirname "$FILE"`
+	docfile="$dname"/"$stem".doc
+	outfile="$stem".asc
+
+	if test ! -r "$docfile"
+	then
+		diag "$PROGNAME:" $docfile "does not exist or cannot be read"
+		EXITSTATUS=1
+	else
+		convert ascii "$docfile" > "$outfile"
+		if	test "$RENAME" = "y"
+		then	if	(convert extended "$outfile" 2>/dev/null |
+					cmp -s - "$docfile")
+			then	if	mv "$outfile" "$docfile"
+				then	EXITSTATUS=0
+				else	diag $PROGNAME:\
+					"cannot rename $outfile as $docfile;"
+					diag $PROGNAME:\
+					"output of conversion is in $outfile"
+					EXITSTATUS=1
+				fi
+			else	diag $PROGNAME:\
+				"conversion may not have been successful;"
+				diag $PROGNAME:\
+				"$docfile unchanged;" \
+				"output of conversion is in $outfile"
+				EXITSTATUS=2
+			fi
+		fi
+	fi
+done
+
+exit $EXITSTATUS

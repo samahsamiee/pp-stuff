@@ -1,0 +1,377 @@
+#! /bin/sh
+#	pp_make_database   From: $Id: imp111.doc,v 1.61 2012/12/27 15:57:37 rda Exp rda $ %Z%
+#
+# Shell script to create a ProofPower child database
+
+PROGNAME=`basename "$0"`
+USAGE="$PROGNAME [-f] -p parentdatabase[#parenttheoryname] newdatabase[#cachetheory]"
+USAGEMSG="$PROGNAME: usage: $USAGE"
+PROGNAME=`basename "$0"`
+diag() {
+	echo $PROGNAME: $* 1>&2
+}
+if test "$PPENVDEBUG" = ""
+then
+	env_diag() {
+		true
+	}
+else
+	env_diag() {
+		diag $*
+	}
+fi
+set_pp_home() {
+	if test "$PPHOME" = ""
+	then
+		BINDIR=`dirname "$0"`
+		if test "$BINDIR" = ""
+		then
+			BINDIR="."
+		fi
+		FINDFILE="$BINDIR"/findfile
+		if test -x "$FINDFILE" && BINFILE=`"$FINDFILE" -r $0`
+		then
+			env_diag "found real path to executable $0 at $BINFILE"
+			REALBINDIR=`dirname "$BINFILE"`
+			PPHOME=`dirname "$REALBINDIR"`
+			if test -d $PPHOME
+			then
+				env_diag "using PPHOME=$PPHOME"
+				export PPHOME
+				PATH="$PPHOME"/bin:"$PATH"
+				env_diag "using PATH=$PATH"
+			else
+				env_diag cannot access $PPHOME
+				diag "cannot locate the ProofPower installation directory"
+			fi
+		else
+			env_diag "cannot find real path to executable $0"
+			diag "cannot locate the ProofPower installation directory"
+			exit 1
+		fi
+	else	env_diag "PPHOME set by caller to $PPHOME"
+		env_diag "PATH set by caller to $PATH"
+	fi
+	if test "$PPDATABASEPATH" = ""
+	then
+		PPDATABASEPATH=".:"$HOME"/db:"$PPHOME"/db"
+		export PPDATABASEPATH
+		env_diag "using PPDATABASEPATH=$PPDATABASEPATH"
+	else
+		env_diag "PPDATABASEPATH set by caller to $PPDATABASEPATH"
+	fi
+}
+LOGFILE=/tmp/pp_make_database.log.$$
+PARENT=""
+FORCE=false
+VERBOSE=false
+COMPACT=${PPCOMPACT:-y}
+case $COMPACT in
+	y|Y) COMPACT=true ;;
+	n|N) COMPACT=false ;;
+	*) diag "If set, the environment variable PPCOMPACT must be one of y, Y, n or N"; exit 1;;
+esac
+if test "$PPCOMPACT" = ""
+then
+	env_diag "Using PPCOMPACT=$COMPACT"
+else
+	env_diag "PPCOMPACT set by caller to $PPCOMPACT"
+fi
+while true
+do
+	case $1 in
+	-p)		PARENT="$2"	; shift ; shift	;;
+	-f)		FORCE=true	; shift ;;
+	-v)		VERBOSE=true	; shift ;;
+	-c)		COMPACT=false	; shift;;
+	-*)		diag "Bad flag for $PROGNAME: $1";
+			diag $USAGEMSG;
+			exit 1 ;;
+	*)							  break ;;
+	esac
+done
+if test "$PARENT" = ""
+then
+	diag $USAGEMSG
+	exit 1
+fi
+set_pp_home
+if test $# -ne 1
+then
+	diag $USAGEMSG
+	exit 1
+fi
+
+NEWDB=$1
+PDATABASE=`echo "$PARENT"|sed -e "s/#.*//"`
+PBDATABASE=`basename "$PDATABASE"`
+if test "$PBDATABASE" = "$PDATABASE"
+then
+	PDDATABASE=""
+else
+	PDDATABASE=`dirname "$PDATABASE"`"/"
+	PPDATABASEPATH="."
+fi
+
+PCACHETHY=`echo "$PARENT"| grep "#" | sed -e "s/.*#//"`
+CDATABASE=`echo "$NEWDB"|sed -e "s/#.*//"`
+CBDATABASE=`basename "$CDATABASE"`
+if test "$CBDATABASE" = "$CDATABASE"
+then
+	CDDATABASE=""
+else
+	CDDATABASE=`dirname "$CDATABASE"`"/"
+fi
+
+COMPILER=${PPCOMPILER:-POLYML}
+if test "$PPCOMPILER" = ""
+then
+	env_diag "Using PPCOMPILER=$COMPILER"
+else
+	env_diag "PPCOMPILER set by caller to $PPCOMPILER"
+fi
+if test "$COMPILER" = POLYML
+then
+	RUNML="pp-ml $MLFLAGS "
+	HEAP_SUFFIX=polydb
+elif test "$COMPILER" = SMLNJ
+then
+	RUNML="sml $MLFLAGS @SMLload="
+	eval `.arch-n-opsys`
+else
+	diag "if set, the environment variable PPCOMPILER must be one of POLYML or SMLNJ" >&2
+	exit 1
+fi
+
+CBDATABASE=`basename "$CBDATABASE" ."$HEAP_SUFFIX"`
+CCACHETHY=`echo "$NEWDB"| grep "#" | sed -e "s/.*#//"`
+if test "$CCACHETHY" = ""
+then	CCACHETHY="cache'$CBDATABASE"
+fi
+if test "$CCACHETHY" = ""
+then	
+	diag "No name for new cache theory"
+	exit 1
+fi
+PBDATABASE=`basename "$PBDATABASE" ".$HEAP_SUFFIX"`
+PDATABASESN=`findfile "$PDDATABASE$PBDATABASE.$HEAP_SUFFIX" "$PPDATABASEPATH"`
+PDATABASEN=`findfile -r "$PDATABASESN"`
+if test $? != 0
+then
+	diag "database $PDDATABASE$PBDATABASE.$HEAP_SUFFIX not found"
+	exit 1
+fi
+if test ! -r "$PDATABASEN"
+then
+	diag "$PDATABASEN not readable"
+	exit 1
+fi
+PWD=`pwd | sed -e 's/\\//\\\\\\//g'`
+PDATABASEFN=`echo "$PDATABASEN" | sed -e "s/^[^/]/$PWD\/&/"`
+CDATABASESTEM=$CDDATABASE$CBDATABASE
+CDATABASEN=$CDATABASESTEM.$HEAP_SUFFIX
+CDATABASEFN=`echo "$CDATABASEN" | sed -e "s/^[^/]/$PWD\/&/"`
+PARENTDATABASENAME=`dirname "$PDATABASEFN"`/`basename "$PDATABASEFN" ."$HEAP_SUFFIX"`
+CHILDDATABASENAME=`dirname "$CDATABASEFN"`/`basename "$CDATABASEFN" ."$HEAP_SUFFIX"`
+if test "$COMPILER" = POLYML
+then
+	if	test -w "$PDATABASEFN"
+	then
+		SAVE_QUIT="save_and_quit()"
+		NEWCHILD_SAVE_QUIT="\
+			(save();\
+			PPBuild.pp'make_database \
+				(translate_for_output \"$CDATABASESTEM\");\
+			quit())"
+	else
+		SAVE_QUIT="(diag_line \"\"; diag_line \"Write access is needed for $PDATABASEFN to make its first child\"; exit 1)"
+		NEWCHILD_SAVE_QUIT="(diag_line \"\"; diag_line \"Write access is needed for $PDATABASEFN to make its first child\"; exit 1)"
+	fi
+	QUIT="quit()"
+	NEWCHILD_QUIT="\
+		(PPBuild.pp'make_database \
+			(translate_for_output \"$CDATABASESTEM\"); quit())"
+elif test "$COMPILER" = SMLNJ
+then
+	NEWCHILD_SAVE_QUIT="(PPBuild.pp'save_name := translate_for_output \"$CDATABASEFN\"; save_and_quit())"
+	NEWCHILD_QUIT="$NEWCHILD_SAVE_QUIT"
+fi
+if test -s "$CDATABASEN"
+then 	if test $FORCE != true
+	then
+		diag "$CDATABASEN already exists; use the -f flag to overwrite it"
+		exit 1
+	fi
+fi
+exit_status=1
+
+trap "'rm' -f $LOGFILE; \
+	exit \$exit_status" 0
+trap "'rm' -f $CHILDDB;
+	'rm' -f $LOGFILE; \
+	exit 1" 1 2 3 15
+
+if test "$COMPILER" = POLYML
+then	eval PPDATABASENAME=\"$PARENTDATABASENAME\" \
+		"$RUNML"\""$PDATABASEFN"\" > /dev/null 2>&1 << ++++
+(pp'Kernel.pp'new_hierarchy(); ($QUIT)) handle _ => PPCompiler.exit 1
+++++
+	NEW=$?
+else	NEW=1
+fi
+if test "$COMPILER" = POLYML -a "$NEW" -ne 0
+then
+	echo "Freezing $PDATABASEN"
+	eval PPDATABASENAME=\"$PARENTDATABASENAME\" \
+		"$RUNML"\""$PDATABASEN"\" > "$LOGFILE" 2>&1 << ++++
+let	val cur_thy = get_current_theory_name ();
+in	if "$PCACHETHY"<>""
+	then (open_theory "$PCACHETHY"
+		handle _ =>
+		(diag_string ("cannot open parent theory"^"$PCACHETHY");
+		PPCompiler.exit 1))
+	else (open_theory (hd(get_cache_theories())) handle _ =>
+		(diag_string ("cannot open cache theory in parent database");
+		PPCompiler.exit 1));
+	(
+		open_theory "$CCACHETHY";
+		diag_string "New cache theory exists in parent database";
+		PPCompiler.exit 0
+	)
+	handle _ => ();
+	((pp'Kernel.pp'freeze_hierarchy())
+	handle (Fail _) =>
+	(diag_string "pp_make_database: Need to freeze parent database hierarchy, but cannot";
+	PPCompiler.exit 1));
+	open_theory cur_thy;
+	($SAVE_QUIT)
+end;
+++++
+	EXIT_STATUS=$?
+	if test $EXIT_STATUS -ne 0
+	then
+		cat "$LOGFILE"
+		echo
+		echo "$PROGNAME: $RUNML$PDATABASEN~ exited with status $EXIT_STATUS"
+		exit 1
+	fi
+	if test "$VERBOSE" = true; then cat $LOGFILE; fi
+	if test "$COMPACT" = true
+	then
+		echo "Compacting $PDATABASEN"
+		if pp-ml -c "$PDATABASEN" > $LOGFILE 2>&1
+		then	true
+		else
+			cat $LOGFILE
+			echo
+			echo "$PROGNAME: failed to compact $PDATABASEN"
+			exit 1
+		fi
+		if test "$VERBOSE" = true; then cat $LOGFILE; fi
+	fi
+	echo "Parent database $PDATABASEN now has a frozen theory hierarchy"
+	eval "$RUNML"\""$PDATABASEFN"\" > "$LOGFILE" 2>&1 << ++++
+$NEWCHILD_QUIT
+++++
+	EXIT_STATUS=$?
+else	# "$COMPILER" = SMLNJ -o NEW -eq 0
+	PPDATABASENAME="$PARENTDATABASENAME" \
+		eval "$RUNML"\""$PDATABASEFN"\" > "$LOGFILE" 2>&1 << ++++
+if "$PCACHETHY"<>""
+then (open_theory "$PCACHETHY"
+	handle _ =>
+	(diag_string ("cannot open parent theory"^"$PCACHETHY");
+	PPCompiler.exit 1))
+else  (open_theory (hd(get_cache_theories())) handle _ =>
+	(diag_string ("cannot open cache theory in parent database");
+	PPCompiler.exit 1));
+
+(
+	diag_string ("Current theory is " ^ get_current_theory_name());
+	open_theory "$CCACHETHY";
+	diag_string "New cache theory exists in parent database";
+	PPCompiler.exit 0
+)
+handle _ => ();
+if
+((pp'Kernel.pp'new_hierarchy() ; false)
+handle (Fail _) =>
+((pp'Kernel.pp'freeze_hierarchy(); true)
+handle (Fail _) =>
+(diag_string "pp_make_database: Need to freeze parent dababase hierarchy, but cannot";
+PPCompiler.exit 1; false)))
+then ($NEWCHILD_SAVE_QUIT)
+else  ($NEWCHILD_QUIT);
+++++
+	EXIT_STATUS=$?
+	if test "$VERBOSE" = true -o ! -r "$CDATABASEN" -o $EXIT_STATUS -ne 0
+	then
+		cat "$LOGFILE"
+	fi
+	if test	$EXIT_STATUS -ne 0
+	then	diag "$RUNML$PDATABASEFN exited with status $EXIT_STATUS"
+		exit 1
+	fi
+	if test -r "$CDATABASEN"
+	then
+		echo "$PROGNAME: parent database $PDATABASEN now has a frozen theory hierarchy" >&2
+	fi
+fi
+
+if test "$VERBOSE" = true -o ! -r "$CDATABASEN" -o $EXIT_STATUS -ne 0
+then
+	cat "$LOGFILE"
+fi
+if test $EXIT_STATUS -ne 0
+then
+	echo
+	diag "$RUNML$PDATABASEFN exited with status $EXIT_STATUS"
+	exit 1
+fi
+if test -r "$CDATABASEN"
+then	true
+else
+	echo
+	diag "unable to create child database"
+	exit_status=1
+	exit 1
+fi
+	eval PPDATABASENAME=\"$CHILDDATABASENAME\" \
+		"$RUNML"\""$CDATABASEN"\" > "$LOGFILE" 2>&1 << ++++
+	abandon_reader_writer() handle _ => ();
+	use_terminal();
+	PrettyPrinter.pp_init();
+	BasicError.pp'error_init();
+	Initialisation.init();
+	val pp'theory_hierarchy = Value (pp'Kernel.pp'new_hierarchy ());
+	pp'Kernel.pp'load_hierarchy (force_value pp'theory_hierarchy);
+	pp'new_kernel_interface_tables();
+	if "$PCACHETHY"<>""
+	then (open_theory "$PCACHETHY"
+		handle _ =>
+		(diag_string ("cannot open parent theory"^"$PCACHETHY");
+			PPCompiler.exit 1))
+	else  (open_theory (hd(get_cache_theories())) handle _ =>
+		(diag_string ("cannot open parent for cache theory");
+			PPCompiler.exit 1));
+	diag_string ("Creating cache theory $CCACHETHY as a child of " ^ get_current_theory_name());
+	new_theory "$CCACHETHY" handle _ =>
+		(diag_string ("cannot create cache theory");
+			PPCompiler.exit 1);
+	set_cache_theories ("$CCACHETHY" :: get_cache_theories());
+	save_and_quit();
+++++
+EXIT_STATUS=$?
+if test "$VERBOSE" = true -o $EXIT_STATUS -ne 0
+then
+	cat "$LOGFILE"
+	echo
+fi
+if test $EXIT_STATUS -ne 0
+then
+	diag "error creating child database"
+	exit_status=1
+	exit 1
+fi
+diag "child database $CDATABASEN created and initialised"
+exit_status=0

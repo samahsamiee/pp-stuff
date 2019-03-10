@@ -1,0 +1,245 @@
+#! /bin/sh
+#	pp   From: $Id: imp111.doc,v 1.61 2012/12/27 15:57:37 rda Exp rda $ %Z%
+#
+# Shell script to start a ProofPower session
+
+if test -z "$PROGNAME"
+then
+	PROGNAME=`basename "$0"`
+	USAGE=\
+"$PROGNAME -d database[#theoryname] [-i files] [-f files [-n|-s] [-v|-q]] [-- ml_flags]"
+fi
+USAGEMSG="usage: $USAGE"
+PROGNAME=`basename "$0"`
+diag() {
+	echo $PROGNAME: $* 1>&2
+}
+if test "$PPENVDEBUG" = ""
+then
+	env_diag() {
+		true
+	}
+else
+	env_diag() {
+		diag $*
+	}
+fi
+set_pp_home() {
+	if test "$PPHOME" = ""
+	then
+		BINDIR=`dirname "$0"`
+		if test "$BINDIR" = ""
+		then
+			BINDIR="."
+		fi
+		FINDFILE="$BINDIR"/findfile
+		if test -x "$FINDFILE" && BINFILE=`"$FINDFILE" -r $0`
+		then
+			env_diag "found real path to executable $0 at $BINFILE"
+			REALBINDIR=`dirname "$BINFILE"`
+			PPHOME=`dirname "$REALBINDIR"`
+			if test -d $PPHOME
+			then
+				env_diag "using PPHOME=$PPHOME"
+				export PPHOME
+				PATH="$PPHOME"/bin:"$PATH"
+				env_diag "using PATH=$PATH"
+			else
+				env_diag cannot access $PPHOME
+				diag "cannot locate the ProofPower installation directory"
+			fi
+		else
+			env_diag "cannot find real path to executable $0"
+			diag "cannot locate the ProofPower installation directory"
+			exit 1
+		fi
+	else	env_diag "PPHOME set by caller to $PPHOME"
+		env_diag "PATH set by caller to $PATH"
+	fi
+	if test "$PPDATABASEPATH" = ""
+	then
+		PPDATABASEPATH=".:"$HOME"/db:"$PPHOME"/db"
+		export PPDATABASEPATH
+		env_diag "using PPDATABASEPATH=$PPDATABASEPATH"
+	else
+		env_diag "PPDATABASEPATH set by caller to $PPDATABASEPATH"
+	fi
+}
+BATCH=""
+DBN=""
+FILES=""
+INITCOUNT=0
+MLFLAGS=""
+NFLAG=""
+QUIET_FLAG="get_flag(\"subgoal_package_quiet\")"
+RESET="false"
+SFLAG=""
+SAVE_ON_SUCCESS="true"
+SAVE_ON_FAIL="false"
+VALIDATE_ONLY="false"
+MLFLAGS=""
+if	[ "$1" = "--" ]
+then	diag $USAGEMSG
+	exit 1
+fi
+while getopts d:i:f:nqsvV arg
+do
+	case $arg in
+	d)	DBN="$OPTARG" ;;
+	i)	if test "$OPTARG" != ""
+		then	INITCOUNT=`expr $INITCOUNT + 1`
+			PPINITVAR='PPINITSCRIPT'$INITCOUNT
+			eval "$PPINITVAR=\"$OPTARG\""
+			eval export $PPINITVAR
+		else	diag "warning: empty file name after -i (ignored)"
+		fi ;;
+	f)	if test "$OPTARG" != ""
+		then	BATCH="y"
+			FILES="$FILES\"$OPTARG\"::"
+		else	diag "warning: empty file name after -f (ignored)"
+		fi ;;
+	n)	NFLAG="y"
+		if test -n "$SFLAG"
+		then
+			SFLAG=""
+			diag "warning: -s flag ignored"
+		fi ;;
+	q)	QUIET_FLAG="true"
+		RESET="set_flag(\"subgoal_package_quiet\", reset_quiet)" ;;
+	s)	if test -z "$NFLAG"
+		then
+			SFLAG="y"
+		else
+			SFLAG=""
+			diag "warning: -s flag ignored"
+		fi ;;
+	v)	QUIET_FLAG="false"
+		RESET="set_flag(\"subgoal_package_quiet\", reset_quiet)" ;;
+	V)	VALIDATE_ONLY="true" ;;
+	'?')	diag $USAGEMSG; exit 1 ;;
+	esac
+	eval NEXTARG=\$\{$OPTIND\}
+	if	[ "$NEXTARG" = "--" ]
+	then	shift $OPTIND
+		MLFLAGS=$@
+		shift $#
+		OPTIND=1
+		break
+	fi	
+done
+if	[ $OPTIND -le $# ]
+then	echo $USAGEMSG
+	exit 1
+else	shift $#
+fi
+PPLASTINITVAR="PPINITSCRIPT"`expr $INITCOUNT + 1`
+eval "$PPLASTINITVAR=\"\""
+eval export "$PPLASTINITVAR"
+if test -z "$BATCH"
+then
+	if test -n "$NFLAG" -o -n "$SFLAG" -o "$VERBOSE" = "true"
+	then
+		diag "the flags -n, -s and -v are only for use with the -f flag"
+		diag $USAGEMSG
+		exit 1
+	fi
+fi
+set_pp_home
+if test -z "$DBN"
+then
+	diag $USAGEMSG
+	exit 1
+fi
+DATABASE=`echo "$DBN"|sed -e "s/#.*//"` >&2
+BDATABASE=`basename "$DATABASE"`
+if test "$BDATABASE" = "$DATABASE"
+then
+	DDATABASE=""
+else
+	DDATABASE=`dirname "$DATABASE"`"/"
+	PPDATABASEPATH="."
+fi
+COMPILER=${PPCOMPILER:-POLYML}
+if test "$PPCOMPILER" = ""
+then
+	env_diag "Using PPCOMPILER=$COMPILER"
+else
+	env_diag "PPCOMPILER set by caller to $PPCOMPILER"
+fi
+if test "$COMPILER" = POLYML
+then
+	RUNML="pp-ml $MLFLAGS "
+	HEAP_SUFFIX=polydb
+elif test "$COMPILER" = SMLNJ
+then
+	RUNML="sml $MLFLAGS @SMLload="
+	eval `.arch-n-opsys`
+else
+	diag "environment variable PPCOMPILER is "$COMPILER" but should be POLYML or SMLNJ"
+	exit 1
+fi
+BDATABASE=`basename "$BDATABASE" ."$HEAP_SUFFIX"`
+PPINITCURRENTTHEORY="`echo "$DBN"| grep "#" | sed -e "s/.*#//"`"
+export PPINITCURRENTTHEORY
+DATABASESN=`findfile "$DDATABASE$BDATABASE.$HEAP_SUFFIX" "$PPDATABASEPATH"`
+DATABASEN=`findfile -r "$DATABASESN"`
+if test $? != 0
+then
+	diag "database $DDATABASE$BDATABASE.$HEAP_SUFFIX not found"
+	exit 1
+fi
+if test -r "$DATABASEN"
+then
+	:
+else
+	diag "database $DDATABASE$BDATABASE.$HEAP_SUFFIX not readable"
+	exit 1
+fi
+PWD=`pwd | sed -e 's/\\//\\\\\\//g'`
+DATABASEFN=`echo "$DATABASEN" | sed -e "s/^[^/]/$PWD\/&/"`
+PPDATABASENAME=`dirname "$DATABASEFN"`/`basename "$DATABASEFN" ."$HEAP_SUFFIX"`
+exit_status=1
+trap "exit \$exit_status" 0
+trap "exit 1" 1 3 15
+if test "$NFLAG" = "y"
+then
+	SAVE_ON_SUCCESS="false"
+else	if test "$SFLAG" = "y"
+	then
+		SAVE_ON_FAIL="true"
+	fi
+fi
+#
+#
+if test "$VALIDATE_ONLY" = "true"
+then
+	exit_status=0
+	exit 0
+fi
+if test -n "$BATCH"
+then
+	trap "exit 1" 2
+	COMMAND=" \
+	  let \
+	    val reset_quiet = set_flag(\"subgoal_package_quiet\","$QUIET_FLAG") \
+					handle Fail _ => false; \
+	    val ok = HOLSystem.load_files ("$FILES"nil); \
+	    val _ = "$RESET" \
+					handle Fail _ => false; \
+	  in \
+		if ok \
+		then	if "$SAVE_ON_SUCCESS" \
+			then	save_and_exit 0 \
+			else	exit 0 \
+		else	if "$SAVE_ON_FAIL" \
+			then	save_and_exit 1 \
+			else	exit 1 \
+	  end;"
+	echo $COMMAND | eval PPDATABASENAME=\"$PPDATABASENAME\" "$RUNML"\""$DATABASEFN"\" 2>&1
+	exit_status=$?
+else
+	eval PPDATABASENAME=\"$PPDATABASENAME\" "$RUNML"\""$DATABASEFN"\"
+	exit_status=$?
+fi
+#
+exit $exit_status

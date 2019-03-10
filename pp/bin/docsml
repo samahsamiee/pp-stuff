@@ -1,0 +1,132 @@
+#! /bin/sh
+#	docsml   From: $Id: imp100.doc,v 1.25 2009/09/06 13:02:41 rda Exp rda $
+
+PROGNAME=`basename "$0"`
+USAGE="$PROGNAME [-v] [-f view_file] [-K] [-k keyword_file] <file> ..."
+USAGEMSG="$PROGNAME: usage: $USAGE"
+PROGNAME=`basename "$0"`
+diag() {
+	echo $PROGNAME: $* 1>&2
+}
+if test "$PPENVDEBUG" = ""
+then
+	env_diag() {
+		true
+	}
+else
+	env_diag() {
+		diag $*
+	}
+fi
+set_pp_home() {
+	if test "$PPHOME" = ""
+	then
+		BINDIR=`dirname "$0"`
+		if test "$BINDIR" = ""
+		then
+			BINDIR="."
+		fi
+		FINDFILE="$BINDIR"/findfile
+		if test -x "$FINDFILE" && BINFILE=`"$FINDFILE" -r "$0"`
+		then
+			env_diag "found real path to executable $0 at $BINFILE"
+			REALBINDIR=`dirname "$BINFILE"`
+			PPHOME=`dirname "$REALBINDIR"`
+			if test -d "$PPHOME"
+			then
+				env_diag "using PPHOME=$PPHOME"
+				export PPHOME
+				PATH="$PPHOME"/bin:"$PATH"
+				env_diag "using PATH=$PATH"
+			else
+				env_diag cannot access $PPHOME
+				diag "cannot locate the ProofPower installation directory"
+			fi
+		else
+			env_diag "cannot find real path to executable $0"
+			diag "cannot locate the ProofPower installation directory"
+			exit 1
+		fi
+	else	env_diag "PPHOME set by caller to $PPHOME"
+		env_diag "PATH set by caller to $PATH"
+	fi
+	if test "$PPETCPATH" = ""
+	then
+		PPETCPATH="$PPHOME"/etc:"$PATH"
+		export PPETCPATH
+		env_diag "using PPETCPATH=$PPETCPATH"
+	else
+		env_diag "PPETCPATH set by caller to $PPETCPATH"
+	fi
+}
+VERBOSE="n"
+SIEVEFILE=""
+KEYFILE=""
+OPT_K=""
+if [ "$DOCSMLVIEW" = "" ]
+then
+	DOCSMLVIEW=sml
+fi
+
+while true
+do
+	case $1 in
+	-f)		SIEVEFILE="-f \"$2\""		; shift ; shift	;;
+	-K)		OPT_K="-K"			; shift		;;
+	-k)		KEYFILE=$KEYFILE" -k \"$2\""	; shift ; shift	;;
+	-v)		VERBOSE="y"			; shift 	;;
+	--)						  shift ; break ;;
+	-*)		diag "Bad flag for $PROGNAME: $1"
+			diag $USAGEMSG
+							exit 1 ;;
+	*)						break ;;
+	esac
+done
+
+if test $# -lt 1
+then
+	diag $USAGEMSG
+	exit 1
+fi
+
+set_pp_home
+
+EXITSTATUS=0
+
+for FILE
+do
+	stem=`basename "$FILE" .doc`
+	dname=`dirname "$FILE"`
+	docfile="$dname"/"$stem".doc
+	outfile="$stem".sml
+
+	if test $VERBOSE = "y"
+	then
+		diag $PROGNAME: reading $docfile writing $outfile
+	fi
+
+	if test ! -r "$docfile"
+	then
+		diag "$PROGNAME:" $docfile "does not exist or cannot be read"
+		EXITSTATUS=1
+	else
+		eval sieve "$OPT_K" "$KEYFILE" "$SIEVEFILE" \""$DOCSMLVIEW"\" < "$docfile" > "$outfile"
+
+		eval sieve "$OPT_K" "$KEYFILE" "$SIEVEFILE" errors < "$docfile" \
+		| sed \
+		-e '1,1s/^\([0-9][0-9]*\)		*\(.*\)/'\
+'(new_error_message {id= \1, text = "\2\\/'\
+		-e '2,$s/^		*\(.*\)/	\\ \1\\/' \
+		-e '2,$s/^\([0-9][0-9]*\)		*\(.*\)/'\
+'\\" }; new_error_message {id= \1, text = "\2\\/' \
+		-e '$s/\\$/" });/' \
+	>> $outfile
+
+		if test ! -s "$outfile"
+		then
+			diag $PROGNAME: Warning, file $outfile is empty
+		fi
+	fi
+done
+
+exit $EXITSTATUS
